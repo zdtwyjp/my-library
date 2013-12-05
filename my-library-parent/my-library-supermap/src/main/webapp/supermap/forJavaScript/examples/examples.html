@@ -1,0 +1,387 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <title>示范程序</title>
+        <link href='./css/sm.css' rel='stylesheet' />
+        <link href='./css/sm-responsive.css' rel='stylesheet' />
+        <link href='./css/sm-doc.css' rel='stylesheet' />
+    </head>
+    <body data-spy="scroll" data-target=".subnav" data-offset="50">
+        <!--导航条-->
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="../index.html">JavaScript API</a>
+                    <div class="nav-collapse">
+                        <ul class="nav" id='titleContent'>
+                            <li class="">
+                            <a href="../index.html">首页</a>
+                            </li>
+                            <li class="">
+                            <a href="./intro.html">产品介绍</a>
+                            </li>
+                            <li class="">
+                            <a href="./developGuide.html">开发指南</a>
+                            </li>
+                            <li class="active">
+                            <a href="./examples.html">示范程序</a>
+                            </li>
+                            <li class="">
+                            <a href="../apidoc/index.html">类参考</a>
+                            </li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="">技术专题 <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="dyncSegmentationTopic.html">动态分段专题</a></li>
+                                    <li><a href="rendererTopic.html">矢量渲染专题</a></li>
+                                    <li><a href="mobileTopic.html">离线缓存与 APP 专题</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--功能区-->
+        <div id='container' class='container'>
+            <div class='page-header'>
+                <h3>范例分类</h3>
+                <ul class="nav nav-tabs" id='myTab'>
+                    <li class='active'><a href="#layer" data-toggle="tab">地图图层</a></li>
+                    <li><a href="#theme" data-toggle="tab">专题图</a></li>
+                    <li><a href="#query" data-toggle="tab">查询</a></li>
+                    <li><a href="#measure" data-toggle="tab">量算</a></li>
+                    <li><a href="#spatialAnalyst" data-toggle="tab">空间分析</a></li>
+                    <li><a href="#netAnalyst" data-toggle="tab">网络分析</a></li>
+                    <li><a href="#dataset" data-toggle="tab">数据集查询编辑</a></li>
+                    <li><a href="#transfer" data-toggle="tab">交通换乘</a></li>
+                    <li><a href="#vector" data-toggle="tab">高性能矢量图层</a></li>
+                </ul>
+                <div class='tab-content' id='myTabContent'>
+                    <div class='tab-pane fade active in' id='layer'>
+                        <ul class='nav nav-pills'>
+                            <li class='active'><a href='javascript:void(0)' target='_self' id='tiledDynamicRESTLayer'>地图动态图层</a></li>
+                            <li><a href='javascript:void(0)' target='_self' id='overlayLayer'>地图动态图层叠加</a></li>
+                            <li><a href='javascript:void(0)' target='_self' id='wmtsLayer'>WMTS 图层</a></li>
+                            <li><a href='javascript:void(0)' target='_self' id='cloudLayer'>SuperMap 云图层</a></li>
+                            <li><a href='javascript:void(0)' target='_self' id='tianditu'>天地图图层</a></li>
+                        </ul>
+                    </div>
+                    <div class='tab-pane fade' id='theme'>
+                        <ul class='nav nav-pills'>
+                            <li><a href='javascript:void(0)' target='_self' id='themeDotDensity'>点密度专题图</a></li>
+                            <li><a href='javascript:void(0)' target='_self' id='themeGraduatedSymbol'>等级符号专题图</a></li>
+                            <li><a href='javascript:void(0)' target='_self' id='themeGraph'>统计专题图</a></li>
+                            <li><a href='javascript:void(0)' target='_self' id='themeLabel'>矩阵标签专题图</a></li>
+                            <li><a href='javascript:void(0)' target='_self' id='themeRange'>分段专题图</a></li>
+                            <li><a href='javascript:void(0)' target='_self' id='themeUnique'>单值专题图</a></li>
+                        </ul>
+                    </div>
+                    <div class='tab-pane fade' id='query'>
+                        <ul class='nav nav-pills'>
+                            <li><a href='javascript:void(0)' target='_self' id='queryByBounds'>范围查询</a></li>
+                            <li><a href='javascript:void(0)' target='_self' id='queryByDistance'>距离查询</a></li>
+                            <li><a href='javascript:void(0)' target='_self' id='queryByGeometry'>几何查询</a></li>
+                            <li><a href='javascript:void(0)' target='_self' id='queryBySQL'>SQL 查询</a></li>
+                        </ul>
+                    </div>
+                    <div class='tab-pane fade' id='measure'>
+                        <ul class='nav nav-pills'>
+                            <li><a href='javascript:void(0)' target='_self' id='measureService'>距离和面积量算</a></li>
+                        </ul>
+                    </div>
+                    <div class='tab-pane fade' id='spatialAnalyst'>
+                        <ul class='nav nav-pills'>
+                            <li><a href='javascript:void(0)' target='_self' id='bufferAnalyst'>缓冲区分析一</a></li>
+                            <li><a href='javascript:void(0)' target='_self' id='bufferQuery'>缓冲区分析二</a></li>
+                            <li><a href='javascript:void(0)' target='_self' id='overlayAnalystService'>叠加分析</a></li>
+                            <li><a href='javascript:void(0)' target='_self' id='surfaceAnalyst'>表面分析</a></li>
+                            <li><a href='javascript:void(0)' target='_self' id='dynamicSegmentation'>动态分段</a></li>
+                        </ul>
+                    </div>
+                    <div class='tab-pane fade' id='netAnalyst'>
+                        <ul class='nav nav-pills'>
+                            <li><a href='javascript:void(0)' target='_self' id='closestFacilities'>最近设施分析</a></li>
+                            <li><a href='javascript:void(0)' target='_self' id='findLocation'>选址分区分析</a></li>
+                            <li><a href='javascript:void(0)' target='_self' id='findMTSPPaths'>多旅行商分析</a></li>
+                            <li><a href='javascript:void(0)' target='_self' id='findMTSPPathsAndTSPPaths'>多旅行商分析（综合应用）</a></li>
+                            <li><a href='javascript:void(0)' target='_self' id='findPath'>最佳路径分析</a></li>
+                            <li><a href='javascript:void(0)' target='_self' id='findTSPPaths'>旅行商分析</a></li>
+                            <li><a href='javascript:void(0)' target='_self' id='serviceAreas'>服务区分析</a></li>
+                        </ul>
+                    </div>
+                    <div class='tab-pane fade' id='dataset'>
+                        <ul class='nav nav-pills'>
+                            <li><a href='javascript:void(0)' target='_self' id='getFeatureByIDs'>ID 查询</a></li>
+                            <li><a href='javascript:void(0)' target='_self' id='getFeatureByGeometry'>几何查询</a></li>
+                            <li><a href='javascript:void(0)' target='_self' id='getFeatureByBuffer'>缓冲区查询</a></li>
+                            <li><a href='javascript:void(0)' target='_self' id='getFeatureBySQL'>SQL 查询</a></li>
+                            <li><a href='javascript:void(0)' target='_self' id='editFeature'>地物编辑</a></li>
+                        </ul>
+                    </div>
+                    <div class='tab-pane fade' id='vector'>
+                        <ul class='nav nav-pills'>
+                            <li><a href='javascript:void(0)' target='_self' id='vectorLayerBusSys'>车辆轨迹回放</a></li>
+                            <li><a href='javascript:void(0)' target='_self' id='vectorLayerRegionName'>查询交互</a></li>
+                            <li><a href='javascript:void(0)' target='_self' id='vectorLayerWeatherMonitor'>气象监测</a></li>
+                        </ul>
+                    </div>
+                    <div class='tab-pane fade' id='transfer'>
+                        <ul class='nav nav-pills'>
+                            <li><a href='javascript:void(0)' target='_self' id='trafficTransfer'>交通换乘</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class='page-header'>
+                <h3><span id='demo-title'></span></h3>
+                <a id='sourceCode' href='#' target='_self'>显示源码</a>
+                <div id='func'></div>
+                <div id='map'></div>
+                <div id='result' class='container'></div>
+                
+            </div>
+            <div class='page-header'>
+                <h3>描述</h3>
+                <p id='desc'>
+                对本案例的描述
+                </p>
+                <h3>操作说明</h3>
+                <p id='oper'>
+                详细的操作说明
+                </p>
+            </div>
+            <div class='footer'>
+                <p>版权所有&nbsp;&copy; 1997-2012. &nbsp;北京超图软件股份有限公司</p>
+            </div>
+        </div>
+        <!--第三方的操作样式库-->
+        <script src='./js/jquery.js'></script>
+        <script src='./js/bootstrap.js'></script>
+        <!--引入SuperMap核心库-->
+        <script src='../libs/SuperMap.Include.js'></script>
+        <!--引入范例使用URL，描述等信息-->
+        <script src='./js/description.js'></script>
+        <script>
+            var loadedScript, dataCount = 0;
+            $(document).ready(function() {
+                var demoID = 'tiledDynamicRESTLayer';
+                var url = './js/' + demoID + '.js';
+                attachScript(url, demoID + "_script");
+                var sourceEle = $('#sourceCode');
+                sourceEle.prop('url', url);
+                sourceEle.click(function() {
+                    openSource(sourceEle); 
+                });
+                attachDetails(demoID);
+
+                //添加单击事件
+                $('#myTabContent').click(function(e) {
+                    e = e || window.event;
+                    addFunc(e);
+                    //阻止浏览器冒泡
+                    if(typeof e.preventDefault === 'function') {
+                        e.preventDefault();
+                        e.stopPropagation();
+                    } else {
+                        e.returnValue = false;
+                        e.cancleBubble = true;
+                    }
+                });
+
+            });
+            //加载具体的案例。
+            function addFunc(e) {               
+                var srcEle = e.target || e.srcElement;
+                if (srcEle && srcEle.nodeName === 'A') {
+                    //特殊案例
+                    if(srcEle.id === 'vectorLayerWeatherMonitor') {
+                        attachScript1('./data/sampleData1.js', function(){dataCount++;if(dataCount!=8)return;activeExample(srcEle);dataCount=0;});
+                        attachScript1('./data/sampleData2.js', function(){dataCount++;if(dataCount!=8)return;activeExample(srcEle);dataCount=0;});
+                        attachScript1('./data/sampleData3.js', function(){dataCount++;if(dataCount!=8)return;activeExample(srcEle);dataCount=0;});
+                        attachScript1('./data/sampleData4.js', function(){dataCount++;if(dataCount!=8)return;activeExample(srcEle);dataCount=0;});
+                        attachScript1('./data/sampleData5.js', function(){dataCount++;if(dataCount!=8)return;activeExample(srcEle);dataCount=0;});
+                        attachScript1('./data/sampleData6.js', function(){dataCount++;if(dataCount!=8)return;activeExample(srcEle);dataCount=0;});
+                        attachScript1('./data/sampleData7.js', function(){dataCount++;if(dataCount!=8)return;activeExample(srcEle);dataCount=0;});
+                        attachScript1('./data/sampleData8.js', function(){dataCount++;if(dataCount!=8)return;activeExample(srcEle);dataCount=0;});
+                        return;
+                    }
+                    activeExample(srcEle);
+                }
+            }
+            function activeExample(srcEle) {
+                updateClassName(srcEle);
+                $('#sourceCode').prop('url', './js/' + srcEle.id + '.js');
+                runExample(srcEle);
+            }
+            function updateClassName(ele) {
+                $('.tab-content').find('> .tab-pane > ul > .active').removeClass('active');
+                $(ele).parent().addClass('active');
+            }
+            //添加script标签
+            function attachScript1(url, callback, id) {
+                var dataScript = document.createElement('script');
+                dataScript.type = 'text/javascript';
+                if(dataScript.readyState) { //IE
+                    dataScript.onreadystatechange = function() {
+                        if(dataScript.readyState == 'complete'){
+                            dataScript.onreadystatechange = null;
+                            callback();
+                        }
+                    }
+                } else { //standers
+                    dataScript.onload = function() {
+                        callback();
+                    }
+                }
+                dataScript.src = url;
+                dataScript.id = id;
+                document.body.appendChild(dataScript);
+            }
+            function attchScriptBefore(url,id) {
+                if(url.indexOf("tianditu")>0) {
+                    attachScript("./js/OpenLayers.js","opLayersID");
+                    attachScript1("http://www.tianditu.com/mapApi/lib/GeoGlobeSDK/GeoGlobeJS.min.js",callback,"tdtID");
+                }else {
+                    var opScript = document.getElementById("opLayersID");
+                    if(opScript){
+                        document.body.removeChild(opScript);
+                    }
+                    var tdtScript = document.getElementById("tdtID");
+                    if(tdtScript){
+                        document.body.removeChild(tdtScript);
+                    }
+                    attachScript(url, id);
+                }
+                function callback() {
+                    attachScript(url, id);
+                }
+            }
+            function attachScript(url, id) {
+                var node = document.getElementById(id);
+                if(node) {
+                    document.body.removeChild(node);
+                }
+                //避免ie下动态加载脚本造成内存泄漏
+                if($.browser.msie) {
+                    var ieId = "example_script_inie";
+                    var ieScript = $('#' + ieId);
+                    if(ieScript.length && $.browser.version < 9) {
+                        ieScript[0].src = url;
+                    } else {
+                        document.body.appendChild(createScript(url, id));
+                    }
+                } else {
+                    document.body.appendChild(createScript(url,id));
+                }
+            }
+            function createScript(url, id) {
+                var exScript = document.createElement('script');
+                exScript.type = 'text/javascript';
+                exScript.src = url;
+                if(id) exScript.id = id;
+                return exScript;
+            }
+            function attachDetails(name) {
+                var details = DemoDescription[name];
+                if(!details.title){
+                    details.title = "案例名称";
+                }
+                if(!details.desc){
+                    details.desc = "对本案例的描述";
+                }
+                if(!details.oper){
+                    details.oper = "详细的操作说明";
+                }
+                $('h3 #demo-title').text(details.title);
+                $('#desc').text(details.desc);
+                $('#oper').text(details.oper);
+            }
+            function runExample(srcEle) {
+                $('#map').remove();
+                $('#func').children().remove();
+                $('#result').children().remove();
+                $("<div id='map'></div>").insertAfter($("#func"));
+
+                //$('h3 #demo-title').text = '案例名称';
+                //$('#desc').text = '对本案例的描述';
+                //$('#oper').text = '详细的操作说明';
+
+                var url= './js/' + srcEle.id+ '.js';
+                attchScriptBefore(url, srcEle.id + "_script");
+                attachDetails(srcEle.id);
+            }
+            //添加button，用于操作地图功能
+            function addBtn(btnDesc, callback) {
+                var node = $("<button class='btn' href='#'>" + btnDesc + "</button>");
+                node.click(callback);
+                node.appendTo($('#func'));
+            }
+            //添加下拉菜单
+            function addDropDownMenu(name) {
+                $("<div class='btn-group'><a class='btn btn-info dropdown-toggle' data-toggle='dropdown' href='#'>" + name + "<span class='caret'></span></a><ul class='dropdown-menu' id='menuList'></ul>").appendTo($("#func"));
+            }
+            function addDropDownMenuItem(name, callback) {
+                var li = $("<li><a href='javascript:void(0)'>" + name + "</a></li>");
+                li.click(callback);
+                li.appendTo($("#menuList"));
+            }
+            //查看源码
+            function openSource(ele) {
+                var href = window.location.href;
+
+                var sourceUrl = href.substr(0, href.lastIndexOf('/')+1) +  ele.prop('url');
+                var broz = SuperMap.Browser.name;
+                if (broz == 'msie'||broz == 'safari') {
+                    showSourceForIE_Safari(sourceUrl );
+                } else if (broz == 'firefox'||broz == 'chrome') {
+                    showSourceForFirefox_Chrome(sourceUrl );
+                } else {
+                    alert("暂不支持此浏览器显示源码！请使用右键——>查看源文件")
+                }
+
+            }
+            //fireFox与Chrome显示源代码方法
+            function showSourceForFirefox_Chrome(url) {
+                window.open("view-source:" + url, "sourceInFirefox", 'toolbar=no,menubar=no,location=no,status=no');
+            }
+            //IE与Safari显示源代码方法
+            function showSourceForIE_Safari(url) {
+                var newIEPage = window.open(url, "sourceInIE", 'toolbar=no,menubar=no,location=no,status=no');
+                var html = $.ajax({ url: url, async: false }).responseText; //获取网页文本内容
+                newIEPage.document.write("<body></body>");
+                newIEPage.document.body.innerText = html;
+            }
+            //弹窗提示框
+            function doMapAlert(tip, mess, success){
+                if($('#mapAlert').size()){
+                    $('div').remove('#mapAlert');
+                }
+				if(tip){
+					tip += '：';
+				}
+                if(!success){
+                    var htmlString = '<div id="mapAlert" class="alert alert-success fade in" style="position:absolute; top: 10px; left: 25%; width:50%; z-index: 2000; text-align: center;">' 
+                            + '<button class="close" data-dismiss="alert">&times;</button>'
+                            + '<strong>' + tip + '</strong>' +  mess
+                            + '</div>';
+                }else{
+                    var htmlString = '<div id="mapAlert" class="alert alert-error fade in" style="position:absolute; top: 10px; left: 25%; width:50%; z-index: 2000;text-align: center;">' 
+                            + '<button class="close" data-dismiss="alert">&times;</button>'
+                            + '<strong>' + tip + '</strong>' +  mess
+                            + '</div>';
+                }
+                
+                $('#map').append($(htmlString));
+            }
+        </script>
+    </body>
+</html>
