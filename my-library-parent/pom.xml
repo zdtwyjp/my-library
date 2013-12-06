@@ -7,6 +7,7 @@
 	<packaging>pom</packaging>
 	<modules>
 		<module>my-library-j2ee</module>
+		<module>my-library-supermap</module>
 	</modules>
 
 	<properties>
