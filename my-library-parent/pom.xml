@@ -9,6 +9,7 @@
 		<module>my-library-j2ee</module>
 		<module>my-library-supermap</module>
 		<module>my-library-hibernate</module>
+		<module>my-library-javascript</module>
 	</modules>
 
 	<properties>
