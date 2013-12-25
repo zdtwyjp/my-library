@@ -1,0 +1,260 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <title>SuperMap iClient for Javascript Android App</title>
+        <link href='./css/style.css' rel='stylesheet' />
+    </head>
+    <body data-spy="scroll" data-target=".subnav" data-offset="50">
+        <!--导航条-->
+        <!--<div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="../index.html">JavaScript API</a>
+                    <div class="nav-collapse">
+                        <ul class="nav" id='titleContent'>
+                            <li class="">
+                            <a href="../index.html">首页</a>
+                            </li>
+                            <li class="">
+                            <a href="./intro.html">产品介绍</a>
+                            </li>
+                            <li class="">
+                            <a href="./developGuide.html">开发指南</a>
+                            </li>
+                            <li class="">
+                            <a href="./examples.html">示范程序</a>
+                            </li>
+                            <li class="">
+                            <a href="../apidoc/index.html">类参考</a>
+                            </li>
+                            <li class="dropdown active">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="">技术专题 <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="dyncSegmentationTopic.html">动态分段专题</a></li>
+                                <li><a href="rendererTopic.html">矢量渲染专题</a></li>
+                                <li><a href="mobileTopic.html">离线缓存与 APP 专题</a></li>
+                            </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>-->
+        <div id='container' class='container'>
+            <div class='page-header'>
+                <h1>SuperMap iClient for Javascript Android App</h1>
+                <hr/>
+                <h2>一、SuperMap JavaScript for Android APP 简介</h2>
+                <div class="pageImage"> <img src="./images/android.PNG" /></div>
+                <p>
+                SuperMap iClient 6R for JavaScript 是一款在服务式 GIS 架构体系中，面向 HTML5 的应用开发，支持多终端，跨浏览器的客户端开发平台。
+                通过 SuperMap iClient 6R for JavaScript，无需任何插件，便可以在浏览器上实现美观的地图展现，内容丰富的地图应用。
+                </p>
+                <p>
+                 近些年来随着智能终端的迅速发展，LBS 应用的大众化普及，手机地图已经在日常生活中扮演着不可或缺的作用。
+                 相比传统的 PC 端地图应用，手机地图的应用具有便于携带、
+                 便于操作、不受空间约束等优势，移动终端这些全新的用户体验是也是传统 PC 所无法媲美。正是在这种背景下，
+                 SuperMap iClient 6R for JavaScript 提供了对手机平台的扩展支持。
+                </p>
+                <p>
+                 SuperMap iClient 6R for JavaScript 提供的 APP 应用插件，
+                 在技术上采用 PhoneGap 开源开发框架，针对 PhoneGap 进行了代码兼容和优化，
+                 并实现了地图离线缓存的插件化支持。通过 SuperMap iClient 6R for JavaScript 开发平台，
+                 你可以通过 HTML，CSS 和 JavaScript 技术构建出基于浏览器的地图应用；通过 PhoneGap 开发框架，你可以将已有的地图应用直接打包生成支持 Android 的应用程序，
+                 并且可以调用系统级别的功能来丰富应用；通过 SuperMap iClient 6R for JavaScript 提供的 APP 应用插件，地图应用具备离线缓存的功能，满足用户在离线状态下的地图应用。 这样，
+                 Web 开发人员利用已有的技术储备，不需要太多的额外学习成本就可以快速的开发出自己的地图 APP 应用。
+                 该开发模式具有如下一些特点：
+                </p>
+                <p>
+                <ul style="list-style-type:disc;">   
+                    <li>APP应用摆脱浏览器的束缚，提供定制化的地图应用，具有较好的用户体验</li>
+                    <li>利用已有的Web技术，不需要考虑繁杂的底层技术</li>    
+                    <li>支持多种手机平台</li>
+                    <li>支持通过 js 调用系统级接口，比如摄像头，GPS 等</li>
+					<!--<li>支持地图离线缓存</li>--> 
+                </ul>
+                </p>
+                <h2>二、SuperMap JavaScript for Android APP 支持功能概述</h2>
+                <p>
+                SuperMap JavaScript for Android APP采用PhoneGap开源框架进行开发，所以使用该app，用户能同时使用phonegap提供的接口（详情请见<a target="_blank" href="http://www.phonegap.cn/?page_id=402">phonegap帮助文档</a>）。除此之外，我们还封装了以下一些功能：
+                </p>
+                <ol> 
+                    <li>支持地图离线缓存：在漫游地图的过程中，客户端会使用离线缓存策略缓存地图数据，即使重新启动客户端或断网的情况下，该缓存仍然有效。
+                    </li>
+                    <li>截屏功能：客户端中封装了截屏功能，并提供了javascript的接口，可以直接用javascript实现截屏。
+                    </li>
+					<li>定位功能：客户端中封装专门升级了定位功能，能实现wifi,gps等几种方式的综合定位功能。
+                    </li>
+					<li>一键打包：产品包中提供了一个打包工具，只需要将您的web程序所在路径设置好，即可一键打包成apk文件。
+                    </li>
+                </ol>
+				<h2>三、各目录及文件介绍</h2>
+				<p>
+                解压下载下来的压缩包后，您将看到如下目录：
+                </p>
+				<div class="pageImage"> <img src="./images/direct.jpg" /></div>
+				<ol> 
+                    <li>
+					ApkBuilder:这个目录中放的是一键打包工具，具体使用方法见下一章。
+                    </li>
+					<li>
+					clouddemo:这个目录中放的是一个基于<a target="_blank" href="http://www.supermapcloud.com/cloudweb/default.html">SuperMap云服务平台</a>做的一个示例程序，您可以作为参考。
+                    </li>
+					<li>
+					js/LocationControl.js:这个文件是移动定位的类，您可以使用该类轻松实现gps、wifi定位功能。
+                    </li>
+					<li>
+					js/ShotScreenControl.js:这个文件是截屏功能类，您可以使用该类轻松实现安卓平板上的截屏功能。
+                    </li>
+					<li>
+					libs/localstorage.jar:这个jar包实现了地图数据本地缓存的功能，需要在android工程中引入。
+                    </li>
+					<li>
+					libs/plugin.jar:这个jar包实现了移动定位、截屏等其他功能。
+                    </li>
+                </ol>
+                <h2>三、如何使用ApkBuilder打包工具打包您的web项目</h2>
+				<hr />
+				<h3>一、系统要求</h3>
+                <p>
+                工具要求系统搭建了Java、Android和Ant环境，需要配置环境变量,这里需要注意的就是不要使
+                用JDK1.7的版本，因为由于不兼容打成的apk文件可能无法使用。
+                </p>
+				<p>
+                环境变量中的Path下最终应该包含以下路径：
+                </p>
+<pre>
+C:\Program Files (x86)\Java\jdk1.6.0_10\bin;D:\android-sdk-windows\tools;D:\apache-ant-1.8.4\bin
+</pre>
+ <p><strong>1.搭建Java环境</strong>
+                </p>
+				<p>
+                首先，下载Java开发工具 <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk6-downloads-1637591.html" target="new">JDK 1.6</a>，
+				选择与个人系统相符合的版本，下载完成后双击安装。
+                </p>
+				<p>
+                然后，找到Java目录下的bin文件夹"C:\Program Files (x86)\Java\jdk1.6.0_10\bin",复制该目录配置到系统环境变量的Path下，如图：
+                </p>
+				<div class="pageImage"><img src="images/8.png"></div>
+				<p>
+                至此，Java环境搭建完毕。
+                </p>
+                <p><strong>2.搭建Android环境</strong>
+                </p> 
+				<p>
+				首先，下载Android开发工具 <a href="http://developer.android.com/sdk/index.html" target="new">Android SDK For Windows</a>，
+				下载完成后双击安装。
+				</p>
+				<p>
+                然后，找到android-sdk-windows目录下的tools文件夹"D:\android-sdk-windows\tools",复制该目录配置到系统环境变量的Path下，如图：
+                </p>
+				<div class="pageImage"><img src="images/9.png"></div>
+				<p>
+                至此，Android环境搭建完毕。
+                </p>
+                <p><strong>3.搭建Ant环境</strong>
+                </p>
+				<p>
+				首先，下载Apache Ant辅助打包工具 <a href="http://ant.apache.org/bindownload.cgi" target="new">Apache Ant</a>，
+				下载完成，解压即可。
+				</p>
+				<p>
+                然后，找到Apache Ant目录下的bin文件夹"D:\apache-ant-1.8.4\bin",复制该目录配置到系统环境变量的Path下，如图：
+                </p>
+				<div class="pageImage"><img src="images/10.png"></div>
+				<p>
+                至此，Ant环境搭建完毕，需要注意的是Ant环境依赖于Java环境，所以在此之前一定要把Java环境搭建好。
+                </p>
+                <h3>二、简介</h3>
+                <p>
+                使用这个工具可以检测当前环境是否符合编译条件，系统环境检测成功以后进入工具主界面，再经过简单的配置可以
+                生成灵活生成apk文件，进而在Android系统上安装运行。
+                </p>
+                <h3>三、使用说明</h3>
+                <p>文件结构如下：
+                </p>
+                <div class="pageImage"><img src="images/1.png" style="width:100%;"></div>  
+                <p><strong>1.双击ApkBuilder.exe文件开始检测用户环境，查看是否符合编译条件，环境符合后单击"下一步"进入主功能界面。</strong>
+                </p>  
+				<div class="pageImage"><img src="images/11.png"></div>    
+                <p><strong>2.主界面有一系列操作指导，可以帮助你快速构建自己的Apk应用</strong>
+                </p> 
+                 <div class="pageImage"><img src="images/7.png"></div>    
+                <p><strong>3.然后单击"生成Apk文件"按钮即可生成Apk文件</strong>
+				</p>
+                 <div class="pageImage"><img src="images/6.png"></div>    
+                <h4>2.1、自定义签名</h4>
+                <p>要想使Android应用程序在真机上运行，需要对apk（Android应用程序的执行文件，
+                相当于Symbian程序的sis/sisx或Java ME程序的jar文件）文件进行签名。可以通过命
+                令行或ADT插件方式对apk文件进行签名。
+                </p>
+                <p><strong>1.使用keytool生成专用密钥（Private Key）文件。</strong>
+                </p>
+                <p>
+                其中androidguy-release.keystore表示要生成的密钥文件名，可以是任意合法的文件名。
+                androidguy表示密钥的别名，<strong>注意本工具要求用户的密钥文件名与密钥的别名相同，
+                </strong>也就是需要把androidguy改成androidguy-release.keystore，后面对apk文
+                件签名时需要用到。RSA表示密钥算法。30000表示签名的有效天数。在执行上面的命令后，需要
+                输入一系列的信息。这些信息可以任意输入，但一般需要输入一些有意义的信息。
+                </p>
+<pre>
+keytool -genkey -v -keystore androidguy-release.keystore -alias androidguy -keyalg RSA -validity 30000
+</pre>
+                <p>所以真正使用的时候是：</p>
+<pre>
+keytool -genkey -v -keystore androidguy-release.keystore -alias androidguy-release.keystore -keyalg RSA -validity 30000
+</pre>
+                <p><strong>2.以下是作者输入的信息作为参考。</strong>
+                </p>
+                <p>
+                在输入完上面的信息后，在当前目录下会生成一个androidguy-release.keystore文件。这个文件就是专用密钥文件。
+                <strong>注意将该文件与批处理文件放在一起。</strong>
+                </p>
+				<pre>
+输入keystore密码：  
+再次输入新密码:  
+您的名字与姓氏是什么？  
+  [Unknown]：  iClient
+您的组织单位名称是什么？  
+  [Unknown]：  supermap
+您的组织名称是什么？  
+  [Unknown]：  supermap  
+您所在的城市或区域名称是什么？  
+  [Unknown]：  chengdu  
+您所在的州或省份名称是什么？  
+  [Unknown]：  sichuan  
+该单位的两字母国家代码是什么？  
+  [Unknown]：  CN  
+CN=li, OU=supermap, O=supermap, L=chengdu, ST=sichuan, C=CN 正确吗？  
+  [否]：  Y  
+正在为以下对象生成 1,024 位 RSA 密钥对和自签名证书(SHA1withRSA)（有效期为 30,000 天）:  
+         CN=li, OU=supermap, O=supermap, L=chengdu, ST=sichuan, C=CN
+输入<androidguy>的主密码  
+        （如果和 keystore 密码相同，按回车）：  
+[正在存储 androidguy-release.keystore] 
+</pre>
+                <p>          
+                <h4>2.2、更换图标</h4>
+                <p>更改图标的操作十分简单，只需要你将四种分辨率的图标分别放到Custom_ICO文件夹中的四个文件夹中即可。
+               <strong>注意图标的名字必须是ic_launcher.png且必须为png格式的图标。</strong>
+               然后双击ApkBuilder.exe文件，生成以后的apk文件安装后显示的图标既是用户自定义的图标
+                </p>
+               <div class="pageImage"> <img src="images/4.png" style="width:100%;"></div>        
+                </p>
+            </div>
+            <div class='footer'>
+                <p>版权所有&nbsp;&copy; 1997-2012. &nbsp;北京超图软件股份有限公司</p>
+            </div>
+        </div>
+        <script src='./js/jquery.js'></script>
+        <script src='./js/bootstrap.js'></script>        
+    </body>
+</html>

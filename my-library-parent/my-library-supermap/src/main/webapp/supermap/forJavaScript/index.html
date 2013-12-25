@@ -1,0 +1,283 @@
+﻿<!DOCTYPE html>
+<html>
+     <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <title>首页</title>
+        <link href='./examples/css/sm.css' rel='stylesheet' />
+        <link href='./examples/css/sm-responsive.css' rel='stylesheet' />
+        <link href='./examples/css/sm-doc.css' rel='stylesheet' />
+        <!--[if lte IE 8]>
+        <style>
+        .container .hero-unit{
+                padding: 60px 400px 60px 60px;
+                background-image:url(./examples/images/home_banner2.png);
+                background-repeat:no-repeat;
+                background-position-x:right;
+                background-position-y:bottom;
+            }
+        </style>
+        <![endif]-->
+    </head>
+    <body data-spy="scroll" data-target=".subnav" data-offset="50">
+        <!--导航条-->
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="./index.html">JavaScript API</a>
+                    <div class="nav-collapse">
+                        <ul class="nav" id='titleContent'>
+                            <li class="active">
+                            <a href="./index.html">首页</a>
+                            </li>
+                            <li class="">
+                            <a href="./examples/intro.html">产品介绍</a>
+                            </li>
+                            <li class="">
+                            <a href="./examples/developGuide.html">开发指南</a>
+                            </li>
+                            <li class="">
+                            <a href="./examples/examples.html">示范程序</a>
+                            </li>
+                            <li class="">
+                            <a href="./apidoc/index.html">类参考</a>
+                            </li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="">技术专题 <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="./examples/dyncSegmentationTopic.html">动态分段专题</a></li>
+                                    <li><a href="./examples/rendererTopic.html">动画渲染专题</a></li>
+                                    <li><a href="./examples/mobileTopic.html">离线缓存与 APP 专题</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container ">
+            <div class="topBanner">
+            <div class="hero-unit ">
+                <h2><font color="#0000FF">SuperMap iClient 6R(2012) for JavaScript</font></h2>
+                <br>
+                <p>SuperMap iClient 6R(2012) for JavaScript 是一套由 JavaScript 语言编写的 GIS 客户端应用开发包， 支持多源数据地图，支持多终端，跨浏览器，
+                 通过本产品可快速实现浏览器上美观、流畅的地图呈现。</p>
+                <br>
+                <br>
+                <a class="btn btn-success" href="./examples/intro.html">更多详情请访问 >></a>        
+            </div>
+            </div>
+                <div class="row-fluid">
+                   
+                    <div>
+                        <h2 class="title" id="details1">产品兼容性</h2>
+                        <ul>
+                            <li > <strong> (1)支持的服务列表： </strong> </li>
+                            <ul  class="circle">
+                                <li>SuperMap iServer 服务
+                                <ul  class="disc">
+                                    <li>地图服务 </li>
+                                    <li>数据服务 </li>
+                                    <li>量算服务</li>
+                                    <li>查询服务</li>
+                                    <li>UGC 图层服务(UGC 栅格图层、UGC 影像图层、UGC 专题图图层、UGC 矢量图层)</li>
+                                    <li>空间关系服务</li>
+                                    <li>专题图服务</li>
+                                    <li>交通换乘服务</li>
+                                    <li>空间分析服务类</li>
+                                    <li>网络分析服务类</li>
+                                  </ul>
+                              </li>
+                                  <li>SuperMap 云服务</li>
+                                  <li>OGC 标准的服务 (WMS、WFS、WMTS)</li>
+                                  <li>其他第三方服务，如天地图等</li>
+                              
+                            </ul>
+                        </ul>
+                        <ul>
+                            <li > <strong> (2)与其他框架的兼容性 </strong> </li>
+                            <ul  class="circle">
+                                <li>jQuery 1.6 +</li>
+                                <li>ExtJS 2.0 +</li>
+                                <li>PhoneGap 1.7.0 +</li>
+                                <li>OpenLayers 2.11，
+                                其中 Geometry 类的子类、继承 Strategy 类的 Paging 类、Filter 类不兼容</li>
+								<li>proj4js.js</li>
+                            </ul>   
+                        </ul>
+                        <ul>
+                            <li > <strong> (3)终端设备与浏览器兼容性 </strong> </li>
+                            <div>
+                            <table width="80%" height="490" class="table table-bordered">
+                                <tr>
+                                    <th width="11%" rowspan="2" style="text-align:center; vertical-align:middle">
+                                        设备类型
+                                    </th>
+                                    <th colspan="6" style="text-align:center; vertical-align:middle">浏览器兼容性
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td width="12%" > IE</td>
+                                    <td width="14%" style="text-align:center; vertical-align:middle">Chrome</td>
+                                    <td width="14%" style="text-align:center; vertical-align:middle">Firefox</td>
+                                    <td width="14%" style="text-align:center; vertical-align:middle">Opera</td>
+                                    <td width="13%" style="text-align:center; vertical-align:middle">Safari</td>
+                                    <td width="22%" colspan="3">移动端 webkit 内核浏览器</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:center; vertical-align:middle"> PC 机终端</td>
+                                    <td style="text-align:center; vertical-align:middle">
+                                    6.0 及以上系列<br>
+                                    <font color="#FF0000">（推荐 9.0 及其以上版本）</font></td>
+                                    <td>
+                                        1.0 及以上系列<br>
+                                        <font color="#FF0000">（推荐 1.0 及其以上版本）</font></td>
+                                    <td>
+                                  2.0 及其以上系列<br>
+                                  <font color="#FF0000">（推荐 5.0 及其以上版本）</font></td>
+                                    <td>
+                                    9.5 及以上系列<br>
+                                    <font color="#FF0000">（推荐 10.0 及其以上版本）</font></td>
+                                    <td>
+                                  3.0 及其以上系列<br>
+                                  <font color="#FF0000">（推荐 4.0 及其以上版本</font></td>
+                                    <td colspan="3">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td height="58" style="text-align:center; vertical-align:middle">Android  2.1+ 移动终端</td>
+                                <td>&nbsp;</td>
+                                  <td>Chrome Lite</td>
+                                    <td>Firefox for Mobile </td>
+                                    <td>Opera Mobile </td>
+                                    <td>&nbsp;</td>
+                                    <td colspan="3" >UC U3 内核浏览器<br>
+                                      QQ 浏览器 2.0 及其以上版本 <br>
+                                      海豚浏览器 4.0 及其以上版本 <br>
+                                      360 浏览器 2.0 及其以上版本<br>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td height="48">iOS  4.0+ 移动终端</td>
+                                <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td >Safari for iOS</td>
+                                    <td colspan="3">UC U3 内核浏览器<br>
+                                      QQ 浏览器 2.0 及其以上版本<br>
+                                      海豚浏览器 4.0 及其以上版本<br>
+                                      360 浏览器 2.0 及其以上版本<br>
+                                    </p></td>
+                                  </tr>
+                                   <tr>
+                                    <td height="78">WP 7.5 移动终端</td>
+                                <td>Internet Explorer Mobile<br>
+                                  （以及基于IE内核的QQ浏览器和UC浏览器）</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                    <td >&nbsp;</td>
+                                    <td colspan="3">&nbsp;</td>
+                                  </tr>
+                            </table>
+                        </div>  
+                        </ul>
+                    </div>
+                    <div>
+                        <h2 class="title" id="details1">产品变更信息</h2>
+                        当前版本：6.1 SP1<br/>
+                        上次版本：6.1.0 <br>
+                         <br>
+                        <p>产品提供了地图图层、地图控件、专题图、查询、量算、空间分析、网络分析、数据集查询、交通换乘、UGC图层服务等功能，
+                        较之前版本本次改版的产品功能更加丰富、性能
+                        更加优越、扩展性更强、
+                        兼容效果更好，本次版本主要做了以下改进和优化：</p> 
+                        <ul>
+                        <li > <strong>1. 新增功能： </strong></li>
+                            <ul>
+                                <li>(1) 新增动态分段服务，仅支持 SuperMap iServer 6.1.2 及其以上版本的动态分段服务</li>
+                                <li>(2) 新增数据服务，提供 ID 查询、几何查询、缓冲区查询、SQL 查询、地物编辑等功能</li>
+                                <li>(3) 新增 Canvas2 渲染方式，适用于制作矢量数据的动画渲染</li>
+                                <li>(4) 新增离线存储和访问功能，支持基于 PhoneGap 开发的移动 Web 应用，
+                                实现离线状态下的地图存储与访问</li>
+                                <li>(5) 新增交通换乘服务，仅支持 SuperMap iServer 6.1.2 及其以上版本的交通换乘服务</li>
+                                <li>(6) 新增 UGC 图层服务，包括 UGC 栅格图层，UGC 矢量图层，UGC 影像图层，UGC 专题图图层 </li>
+                                <li>(7) 新增空间关系分析服务，仅支持 SuperMap iServer 6.1.2 及其以上版本的空间关系服务</li>
+                            </ul>
+                    <li><strong>2. 接口变更： </strong></li>
+                            <ul>
+                                <li>(1) CanvasLayer 类新增 dpi 属性</li>
+                                <li>(2) SampleCacheLayer 类删除了viewBounds、viewer、format三个属性</li>
+                                <li>(3) CloudLayer 类新增 url 属性</li>
+                                <li>(4) PathGuideItem 类新增 geometry 和 description 属性</li>
+                                <li>(5) SuperMap.Feature.Vector 中 attributes 属性修改为键值对形式</li>
+                                <li>(6) SuperMap.Control.PanZoomBar  中新增 showSlider 属性</li>
+                                <li>(7) SuperMap.Control.PanZoomBar  新增 levelsDesc 属性</li>
+                                <li>(8) SuperMap.Layer.TiledDynamicRESTLayer 新增 dpi 和 projection 属性，同时关闭 viewBounds 、viewer、scale 三个属性，
+                                删除设置在 url上的 maxVisibleVertex 参数</li>
+                                <li>(9) 删除 Ajax 类</li>
+                                <li>(10) SuperMap.REST.ThemeParameters 新增 displayFilter 和 displayOrderBy 属性</li>
+                                <li>(11) SuperMap.REST.TransportationAnalystParameter 新增 barrierPoints 属性</li>
+                            </ul>
+              <li><strong>3. 性能优化： </strong></li>
+                            <ul>
+                                <li>(1) 缩放动画与平移交互操作优化</li>
+                                <li>(2) 瓦片渐进效果优化</li>
+                                <li>(3) 多图层叠加性能优化</li>
+                                <li>(4) 动画重构与插件化</li>
+                            </ul>
+                        <li><strong>4. 产品包以及产品化工作的完善： </strong></li>
+                            <ul>
+                                <li>(1) 统一命名空间为 SuperMap</li>
+                                <li>(2) 精简库文件，压缩核心库</li>
+                                <li>(3) 全新的产品页面样式，对产品页面整体的内容结构、页面布局做了重大调整</li>
+                                <li>(4) 帮助文档本地化</li>
+                                <li>(5) 控件及其样式的调整，部分控件进行了功能完善和改进，删除了 Pan， PanPanel， ZoomIn， 
+                                ZoomOut， ZoomPanel， ZoomToMavExtent 等控件， 将 PanZoom 合并到 PanZoomBar，并且优化了 PanZoomBar</li>
+                            </ul>
+                        <li><strong>5. 新增范例： </strong></li>
+                            <ul>
+                                <li>(1) 动态分段专题范例</li>
+                                <li>(2) 数据集缓冲区查询范例</li>
+                                <li>(3) 数据集 SQL 查询范例</li>
+                                <li>(4) 数据集几何查询范例</li>
+                                <li>(5) 数据集 ID 查询范例</li>
+                                <li>(6) 高性能矢量图层渲染---车辆监控系统范例，须在支持 HTML5 Canvas 的浏览器下运行</li>
+                                <li>(7) 高性能矢量图层渲染---大数据矢量地物查询与交互范例，须在支持 HTML5 Canvas 的浏览器下运行</li>
+                                <li>(8) 高性能矢量图层渲染---气象监测范例，须在支持 HTML5 Canvas 的浏览器下运行</li>
+                                <li>(9) WMTS 图层使用范例</li>
+                                <li>(10) 新增交通换乘范例</li>
+                            </ul>
+                        <li><strong>6. 修复的问题： </strong></li>
+                            <ul>
+                                <li>(1) 修复地图控件设置固定比例尺后，PanZoomBar 控件显示异常问题</li>
+                                <li>(2) 修复 WMTS 图层出图问题</li>
+                                <li>(3) 更新天地图图片地址</li>
+                                <li>(4) 修复使用 map 获取比例尺出错问题 </li>
+                                <li>(5) 解决多点量算、跨域量算问题 </li>
+                                <li>(6) 修复加载 4.0 + 缓存的出图错误问题</li>
+                            </ul>
+                        </ul>
+                    </div>
+                </div>
+               
+            
+            <hr>
+            <div class='footer'>
+            <p>版权所有&nbsp;&copy; 1997-2012. &nbsp;北京超图软件股份有限公司</p>
+        </div>
+            
+        </div>
+        
+        <script src='./examples/js/jquery.js'></script>
+        <script src='./examples/js/bootstrap.js'></script>
+        
+    </body>
+</html>
