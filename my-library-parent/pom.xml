@@ -10,6 +10,7 @@
 		<module>my-library-supermap</module>
 		<module>my-library-hibernate</module>
 		<module>my-library-javascript</module>
+		<module>my-library-doc</module>
 	</modules>
 
 	<properties>
