@@ -11,6 +11,7 @@
 		<module>my-library-hibernate</module>
 		<module>my-library-javascript</module>
 		<module>my-library-doc</module>
+		<module>my-library-openlayers</module>
 	</modules>
 
 	<properties>
