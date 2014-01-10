@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    
+    <link rel="stylesheet" href="../OpenLayers/theme/default/style.css" type="text/css">
+	<link rel="stylesheet" href="style.css" type="text/css">
+	<script src="../OpenLayers-2.13/lib/OpenLayers.js"></script>
+	
+	<style type="text/css">
+		.smallmap {
+		    width: 900px;
+		    height: 650px;
+		    border: 1px solid #ccc;
+		}
+	</style>
+    
+    <script type="text/javascript">
+        var lon = 91.286317;
+        var lat = 30.138075;
+        var zoom = 9;
+        var map;
+        
+        function init(){
+			map = new OpenLayers.Map('map',  {
+				numZoomLevels: 30
+			});
+			var diming = new OpenLayers.Layer.WMS(
+	            "lskfq:7_zhengqu", 
+	            "http://localhost:8899/geoserver/lskfq/wms",
+	            {
+	              layers: 'lskfq:7_zhengqu',
+	              styles: '',
+	              format: 'image/png',
+	              isBaseLayer: 'true'
+	            }
+            );
+			map.addLayer(diming);
+			
+			var icon = new OpenLayers.Icon('../OpenLayers-2.13/img/marker.png', 20, 20);
+			var markers = new OpenLayers.Layer.Markers( "Markers" );
+			map.addLayer(markers);
+			markers.addMarker(new OpenLayers.Marker(new OpenLayers.LonLat(92.1,31.2),icon));
+            
+            map.setCenter(new OpenLayers.LonLat(lon, lat), zoom);
+            map.addControl( new OpenLayers.Control.LayerSwitcher() );
+            
+            
+
+        }
+    </script>
+  </head>
+  <body onload="init()">
+
+    <div id="map" class="smallmap"></div>
+    
+  </body>
+</html>
+
+
+
+

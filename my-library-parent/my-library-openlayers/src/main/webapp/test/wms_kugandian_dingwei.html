@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    
+    <link rel="stylesheet" href="../OpenLayers-2.13/theme/default/style.css" type="text/css">
+	<link rel="stylesheet" href="style.css" type="text/css">
+	<script src="../OpenLayers-2.13/OpenLayers.debug.js"></script>
+	<script src="../OpenLayers-2.13/OpenLayers.Popup.CSSPopup.js"></script>
+	<script src="../OpenLayers-2.13/OpenLayers.Popup.CSSFramedCloud.js"></script>
+	
+	
+	<style type="text/css">
+		html  , body {
+			height: 100%; 
+		}
+		
+		body {
+			margin: 0 auto;
+			padding: 0;
+			font-family: "Microsoft YaHei", "宋体", verdana, Arial, "simsun";
+			font-size: 12px;
+			/*background:url(${base}${request.contextPath}/resources/app/skin/blue/images/welcome.jpg) no-repeat center center #fafdff;*/
+			background: #f4f0e3;
+		}
+		
+		.smallmap {
+			width: 1000px;
+			height: 650px;
+		    border: 1px solid #ccc;
+		}
+		
+		.olPopup_css {
+			margin-left: 15px;
+			margin-top: -30px;
+		}
+		
+	</style>
+    
+    <script type="text/javascript">
+	 var wms_url = 'http://124.31.219.50:8099/geoserver/xizang/wms';
+	 var wms_zhengqu = 'xizang:xizang';
+     var lon = 91.286317;
+     var lat = 30.138075;
+     var zoom = 3;
+     var map, vectors, geojson;
+     
+     
+     function init(){
+    	 var bounds = new OpenLayers.Bounds(
+             78.395855, 26.849447,
+             99.11180114746094, 36.48579025268555
+         );
+         var options = {
+             controls: [],
+             maxExtent: bounds,
+             maxResolution: 0.0809216646385193,
+             projection: "EPSG:4326",
+             units: 'degrees',
+             numZoomLevels: 15
+         };
+         map = new OpenLayers.Map('map', options);
+         
+         map.addControl(new OpenLayers.Control.PanZoomBar({
+             position: new OpenLayers.Pixel(2, 5)
+         }));
+         map.addControl(new OpenLayers.Control.Navigation());
+		 
+		 var diming = new OpenLayers.Layer.WMS(
+	          wms_zhengqu, 
+	          wms_url,
+	          {
+	            layers: wms_zhengqu,
+	            styles: '',
+	            format: 'image/png'
+	          },
+	          {
+	        	 singleTile: true,
+	             isBaseLayer: 'true'
+	          });
+		map.addLayer(diming);
+		map.setCenter(new OpenLayers.LonLat(lon, lat), zoom);
+		
+		
+		vectors = new OpenLayers.Layer.Vector();  
+    	geojson = new OpenLayers.Format.GeoJSON(); 
+    	map.addLayer(vectors); 
+     }
+     
+     function createPopup(obj){
+    	var html = '';
+    	html += '<div>';
+    	html += '矿点名称：' + obj.kdmc + '<br>';
+    	html += '矿点编号：' + obj.kdbh + '<br>';
+    	html += '所属企业：' + obj.sskq + '<br>';
+    	
+    	if(obj.dz && obj.dz != 'null' && obj.dz != ''){
+	    	html += '地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址：' + obj.dz;
+    	}
+    	html += '</div>';
+    	 
+    	 
+     	var popup = new OpenLayers.Popup.FramedCloud(
+      				'Popup',
+      				new OpenLayers.LonLat(obj.lon, obj.lat), 
+      				null,
+        			html, 
+                    null,
+        		    true,
+      				null
+   		 );
+   		 map.addPopup(popup);
+   		 return popup;
+     }
+     
+     
+     function createMarker(obj){
+     	var markerPng = '../OpenLayers-2.13/img/myMarker3.png';
+        var markers = new OpenLayers.Layer.Markers('Markers');
+	    map.addLayer(markers);
+
+	    var size = new OpenLayers.Size(27,36);
+	    var offset = new OpenLayers.Pixel(-(size.w/2), -size.h);
+	    var icon = new OpenLayers.Icon(markerPng, size, offset);
+     	
+     	var marker = new OpenLayers.Marker(new OpenLayers.LonLat(obj.lon, obj.lat),icon.clone());
+        markers.addMarker(marker);
+        
+        marker.events.register('mousedown', marker, function(evt) {
+        	var popup = createPopup(obj);
+	    	map.addPopup(popup);
+       	}); 
+        
+        var msgPopup = new OpenLayers.Popup.CSSPopup(obj.kdmc,
+				new OpenLayers.LonLat(obj.lon, obj.lat),
+				null,
+                obj.kdmc,
+				null,
+				null,
+				null
+			);
+		map.addPopup(msgPopup);
+		return {
+			markers: markers,
+			popup: msgPopup
+		};
+     }
+     
+     function createJson(lon,lat, num) {
+     	var data = '{"type":"FeatureCollection", "features":[{"type":"Feature", "geometry":{"type":"LineString","coordinates":[';
+     	var temp = '';
+     	for(var i=num; i>0; i--){
+     		temp += '['+(lon + num*0.1)+', '+(lat + num*0.1)+']';
+     		if(i != 1) {
+     			temp += ',';
+     		}
+     	}
+     	data += temp;
+     	data += ']}}]}';
+     	console.log(data);
+     	return data;
+     }
+     
+     function loadData(){
+     	num++;
+     	console.log('load data' + num);
+     	
+     	/**
+     	if (num === 1) {
+     		data = '{"type":"FeatureCollection", "features":[{"type":"Feature", "geometry":{"type":"LineString","coordinates":[[89.286317, 32.138075]]}}]}';
+     	} else if (num ===2 ) {
+     		data = '{"type":"FeatureCollection", "features":[{"type":"Feature", "geometry":{"type":"LineString","coordinates":[[89.286317, 32.138075],[88.87540, 29.27557]]}}]}';
+     	} else if (num ===3 ) {
+     		data = '{"type":"FeatureCollection", "features":[{"type":"Feature", "geometry":{"type":"LineString","coordinates":[[89.286317, 32.138075],[88.87540, 29.27557],[92.02305,29.20164]]}}]}';
+     	} else {
+     		data = '{"type":"FeatureCollection", "features":[{"type":"Feature", "geometry":{"type":"LineString","coordinates":[[89.286317, 32.138075],[88.87540, 29.27557],[92.02305,29.20164],[94.47741,29.59427],[97.14937,30.10330]]}}]}';
+     	}*/
+     	
+     	//var data = '{"type":"FeatureCollection", "features":[{"type":"Feature", "geometry":{"type":"LineString","coordinates":[[89.286317, 32.138075],[88.87540, 29.27557],[92.02305,29.20164],[94.47741,29.59427],[97.14937,30.10330]]}}]}';
+     	/**
+     	var data = createJson(88.87540, 29.27557, num);
+     	var features = geojson.read(data, "FeatureCollection");  
+        if(features) { 
+            vectors.addFeatures(features);
+        }
+        
+        var data1 = createJson(89.286317, 32.138075, num);
+     	var features1 = geojson.read(data1, "FeatureCollection");  
+        if(features1) { 
+            vectors.addFeatures(features1);
+        }*/
+        
+        var data = '';
+        if (num === 1) {
+	        data = '{"type":"FeatureCollection", "features":[{"type":"Feature", "geometry":{"type":"LineString","coordinates":[[88.87540, 29.27557],[92.02305, 29.20164]]}}]}';
+        } else if(num === 2) {
+        	data = '{"type":"FeatureCollection", "features":[{"type":"Feature", "geometry":{"type":"LineString","coordinates":[[92.02305,29.20164],[94.47741,29.59427],[97.14937, 30.10330]]}}]}';
+        }
+        
+     	
+     	var sp = getStartPointById(1);
+     	if (!sp) {
+     		console.log('StartPoint is null!');
+     		return ;
+     	}
+     	map.removePopup(sp.popup);
+     	map.removeLayer(sp.markers);
+     	
+		var features1 = geojson.read(data, "FeatureCollection");  
+        if(features1) { 
+            vectors.addFeatures(features1);
+        }    	
+     	
+     	var lon = '92.02305';
+		var lat = '29.20164';
+		
+		if (num === 1) {
+			lon = 92.02305;
+			lat = 29.20164;
+        } else if(num === 2) {
+        	lon = 97.14937;
+			lat = 30.10330;
+        }
+		
+		var kdmc = '张三';
+		var kdbh = 'xxx';
+		var sskq = 'ddd';
+		var dz = 'ddd';
+		var b02 = {
+			lon: lon,
+			lat: lat,
+			kdmc: kdmc,
+			kdbh: kdbh,
+			sskq: sskq,
+			dz: dz
+		};
+		var obj = createMarker(b02);
+     	
+     	sp.markers = obj.markers;
+     	sp.popup = obj.popup;
+     	sp.lonLat.lon = lon;
+     	sp.lonLat.lat = lat;
+     	
+     	console.log(starts);
+     }
+     
+     
+        
+        	
+    </script>
+  </head>
+  <body>
+    <div id="map" class="smallmap"></div>
+  </body>
+</html>
+
+<script type="text/javascript">
+	 var starts = [];
+	 var StartPoint = function(obj){
+	 	var result = {
+			id: obj.id, 		
+	 	    lonLat: {lon: obj.lon, lat: obj.lat},
+	 	    popup: obj.popup,
+	 	    markers: obj.markers
+	 	}
+	 	starts.push(result);
+	 	return result;
+	 }
+	 
+	 function getStartPointById(id){
+	 	for(var i=0; i<starts.length; i++) {
+	 		var start = starts[i];
+	 		if (start.id === id) {
+	 			return start;
+	 		}
+	 	}
+		return null;	 	
+	 } 
+	
+</script>
+<script type="text/javascript">
+	 
+	(function(){init();})(); 
+	
+	// init data
+	(function(){
+		var data1 = '{"type":"FeatureCollection", "features":[{"type":"Feature", "geometry":{"type":"LineString","coordinates":[[89.286317, 32.138075],[88.87540, 29.27557]]}}]}';
+		var features1 = geojson.read(data1, "FeatureCollection");  
+        if(features1) { 
+            vectors.addFeatures(features1);
+        }
+	
+		var lon = '88.87540';
+		var lat = '29.27557';
+		var kdmc = '张三';
+		var kdbh = 'xxx';
+		var sskq = 'ddd';
+		var dz = 'ddd';
+		var b02 = {
+			lon: lon,
+			lat: lat,
+			kdmc: kdmc,
+			kdbh: kdbh,
+			sskq: sskq,
+			dz: dz
+		};
+		var obj = createMarker(b02);
+		
+		var sp = new StartPoint({
+		 	id: 1,
+		 	lon: 90.0754,
+		 	lat: 30.475569999999998,
+		 	popup: obj.popup,
+		 	markers: obj.markers
+		});
+		
+	})();
+	
+	var num=0;
+	var t=setTimeout("loadData();",1000);
+	//var t=setInterval("loadData();",3000);
+</script>
+
+
+

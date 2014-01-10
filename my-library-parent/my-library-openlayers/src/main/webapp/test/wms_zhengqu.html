@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    
+    <link rel="stylesheet" href="../OpenLayers-2.13/theme/default/style.css" type="text/css">
+	<link rel="stylesheet" href="style.css" type="text/css">
+	<script src="../OpenLayers-2.13/OpenLayers.debug.js"></script>
+	<script src="../OpenLayers-2.13/OpenLayers.Popup.CSSPopup.js"></script>
+	
+	
+	<style type="text/css">
+		.smallmap {
+		    width: 900px;
+		    height: 650px;
+		    border: 1px solid #ccc;
+		}
+		
+		.olPopup_css {
+			margin-left: 15px;
+		}
+		
+	</style>
+    
+    <script type="text/javascript">
+        var lon = 91.286317;
+        var lat = 30.138075;
+        var zoom = 9;
+        var map;
+        
+        function init(){
+			map = new OpenLayers.Map('map',  {
+				numZoomLevels: 30
+			});
+			var diming = new OpenLayers.Layer.WMS(
+	            "lskfq:7_zhengqu", 
+	            "http://localhost:8899/geoserver/lskfq/wms",
+	            {
+	              layers: 'lskfq:7_政区',
+	              styles: '',
+	              format: 'image/png',
+	              isBaseLayer: 'true'
+	            }
+            );
+			map.addLayer(diming);
+        
+	        var markers = new OpenLayers.Layer.Markers("Markers");
+			map.addLayer(markers);
+			
+			var size = new OpenLayers.Size(21,25);
+			var offset = new OpenLayers.Pixel(-(size.w/2), -size.h);
+			var icon = new OpenLayers.Icon('../OpenLayers-2.13/img/marker.png', size, offset);
+			markers.addMarker(new OpenLayers.Marker(new OpenLayers.LonLat(91.5,30.1),icon));
+        
+            map.setCenter(new OpenLayers.LonLat(lon, lat), zoom);
+            //map.addControl( new OpenLayers.Control.LayerSwitcher() );
+        
+        
+        	var marker = new OpenLayers.Marker(new OpenLayers.LonLat(91.5,30.15),icon.clone());
+            marker.events.register('mousedown', marker, function(evt) { 
+        		var lonlat = new OpenLayers.LonLat(91.5,30.15);
+	        	var popup = new OpenLayers.Popup.FramedCloud(
+	        				"Popup",
+	        				lonlat, 
+	        				null,
+			        		'Test Popup', 
+	                        null,
+			        		true,
+	        				null
+			    );
+	            map.addPopup(popup);
+        		
+        	});
+            markers.addMarker(marker); 
+            
+			/**
+        	var popup = new OpenLayers.Popup("chicken",
+                   new OpenLayers.LonLat(91.5,30.15),
+                   new OpenLayers.Size(100,20),
+                   "example popup",
+                   false);
+            map.addPopup(popup);
+			*/
+			
+			
+			var p2 = new OpenLayers.Popup.CSSPopup('test',
+				new OpenLayers.LonLat(91.5,30.15),
+				new OpenLayers.Size(200,200),
+                "example popup222",
+                false,
+				null,
+				null,
+				null,
+				null
+			);
+			map.addPopup(p2);
+        
+        	/**  
+        	var lonlat = new OpenLayers.LonLat(91.5,30.15);
+        	var popup = new OpenLayers.Popup.FramedCloud(
+        				"Popup",
+        				lonlat, 
+        				null,
+		        		'Test Popup', 
+                        null,
+		        		false,
+        				null
+		    );
+            map.addPopup(popup);
+        
+        	var lonlat2 = new OpenLayers.LonLat(91.5,30.9);
+        	var popup2 = new OpenLayers.Popup.FramedCloud(
+        				"Popup2",
+        				lonlat2, 
+        				null,
+		        		'Test Popup2', 
+                        null,
+		        		false,
+        				null
+		    );
+            map.addPopup(popup2);
+			*/
+        }
+    </script>
+  </head>
+  <body onload="init()">
+
+    <div id="map" class="smallmap"></div>
+    
+  </body>
+</html>
+
+
+
+

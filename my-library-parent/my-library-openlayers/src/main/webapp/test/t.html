@@ -1,0 +1,164 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+     <title>OpenLayers map preview</title>
+     <style type="text/css">
+      #map {
+        width: 800px;
+        height: 380px;
+        border: 1px solid black;
+      }
+     </style>
+     
+     <link rel="stylesheet" href="../OpenLayers/theme/default/style.css" type="text/css">
+	 <link rel="stylesheet" href="style.css" type="text/css">
+	 <script src="../OpenLayers/lib/OpenLayers.js"></script>
+     
+     <script defer="defer" type="text/javascript">
+       var map;
+       var untiled;
+       var tiled;
+       function setHTML(response) { 
+        OpenLayers.Util.getElement('nodelist').innerHTML = response.responseText;
+       };
+       
+       function init(){
+          map = new OpenLayers.Map('map', {controls:[], 'projection': 'EPSG:4326', 'units':'degrees'}); 
+          
+          OpenLayers.IMAGE_RELOAD_ATTEMPTS = 5;
+          
+          // setup tiled layer
+          var bounds = new OpenLayers.Bounds(114.08473735,22.5444392,114.09911765000001,22.5517168)
+          tiled = new OpenLayers.Layer.WMS(
+            "nurc:Arc_Sample", 
+            "http://localhost:8899/geoserver/nurc/wms",
+            {
+              height: '330',
+              width: '660',
+              layers: 'nurc:Arc_Sample',
+              styles: '',
+              srs: 'EPSG:4326',
+              format: 'image/png', 
+              tiled: 'true', 
+              tilesOrigin : "114.08473735,22.5444392"
+            }
+          ,
+            {maxExtent: bounds, maxResolution: 5.617304687505209E-5, projection: "EPSG:4326", buffer: 0} 
+          );
+          map.addLayer(tiled);
+          jiaotonggandao_region = new OpenLayers.Layer.WMS(
+            "topp:jiaotonggandao_region", "http://localhost:8080/geoserver/wms",
+            {
+              height: '392',
+              width: '800',
+              layers: 'topp:jiaotonggandao_region',
+              styles: '',
+              srs: 'EPSG:4326', transparent: "true",
+              format: 'image/png', tiled: 'true', tilesOrigin : "114.0836293,22.543578500000002"
+            },
+            {maxExtent: bounds, maxResolution: 6.49429687499814E-5, projection: "EPSG:4326", buffer: 0} 
+          );
+          map.addLayer(jiaotonggandao_region);
+		  daoluzhongxinxian_polyline = new OpenLayers.Layer.WMS(
+            "topp:daoluzhongxinxian_polyline", "http://localhost:8080/geoserver/wms",
+            {
+              height: '392',
+              width: '800',
+              layers: 'topp:daoluzhongxinxian_polyline',
+              styles: '',
+              srs: 'EPSG:4326', transparent: "true",
+              format: 'image/png', tiled: 'true', tilesOrigin : "114.0836293,22.543578500000002"
+            },
+            {maxExtent: bounds, maxResolution: 6.49429687499814E-5, projection: "EPSG:4326", buffer: 0,isBaseLayer:false} 
+          );
+          map.addLayer(daoluzhongxinxian_polyline);
+
+		  shangsha_font_point = new OpenLayers.Layer.WMS(
+            "topp:shangsha_font_point", "http://localhost:8080/geoserver/wms",
+            {
+              width: '800',
+              layers: 'topp:shangsha_font_point',
+              styles: '',
+              srs: 'EPSG:4326',
+              height: '381',
+              format: 'image/png', transparent: "true",tiled: 'true', tilesOrigin : "114.0838415,22.543650900000003"
+            },
+            {maxExtent: bounds, maxResolution: 6.20898437499462E-5, projection: "EPSG:4326", buffer: 0,isBaseLayer:false} 
+          );
+          map.addLayer(shangsha_font_point);
+
+          //map.addLayer(tiled);
+          // setup untiled layer
+		  
+          untiled = new OpenLayers.Layer.WMS.Untiled(
+            "topp:danwei_font_point", "http://localhost:8080/geoserver/wms",
+            {
+              height: '380',
+              width: '800',
+              layers: 'topp:danwei_font_point',
+              styles: '',
+              srs: 'EPSG:4326',
+              format: 'image/png'
+            },
+            {maxExtent: bounds, maxResolution: 5.617304687505209E-5, projection: "EPSG:4326"} 
+          );
+          untiled.ratio=1;
+          untiled.setVisibility(false, false);
+	   //map.addLayer(untiled); 
+		  
+          // setup controls and initial zooms
+	      map.addControl(new OpenLayers.Control.PanZoomBar({div:$('nav')}));
+          map.addControl(new OpenLayers.Control.MouseDefaults());
+          map.addControl(new OpenLayers.Control.Scale($('scale')));
+          map.addControl(new OpenLayers.Control.MousePosition({element: $('position')}));
+          map.addControl(new OpenLayers.Control.LayerSwitcher());
+          map.addControl(new OpenLayers.Control.OverviewMap());
+          map.zoomToExtent(bounds);
+          
+          // support GetFeatureInfo
+          map.events.register('click', map, function (e) {
+            OpenLayers.Util.getElement('nodelist').innerHTML = "Loading... please wait..." + map.layers[0].name;
+            var url =  map.layers[0].getFullRequestString({
+                            REQUEST: "GetFeatureInfo",
+                            EXCEPTIONS: "application/vnd.ogc.se_xml",
+                            BBOX: map.getExtent().toBBOX(),
+                            X: e.xy.x,
+                            Y: e.xy.y,
+                            INFO_FORMAT: 'text/html',
+                            QUERY_LAYERS: map.layers[0].params.LAYERS,
+                            FEATURE_COUNT: 50,
+                            layers: 'topp:danwei_font_point',
+                            styles: '',
+                            srs: 'EPSG:4326',
+                            WIDTH: map.size.w,
+                            HEIGHT: map.size.h},
+                            "http://localhost:8080/geoserver/wms"
+                            );
+            OpenLayers.loadURL(url, '', this, setHTML, setHTML);
+            Event.stop(e);
+      });
+      }
+      </script>
+  </head>
+  
+  <body onload="init()">
+     <table>
+       <tr>
+         <td style="width:40px" valign="middle" rowspan="3"><div id="nav"></div></td>
+         <td colspan="3" align="right">
+           <!-- Switch layers when links are pressed -->
+           <a id="untiledLink" href="#" onclick="map.removeLayer(tiled);map.addLayer(untiled)">Untiled</a>
+           <a id="tiledLink" href="#" onclick="map.removeLayer(untiled);map.addLayer(tiled);">Tiled</a>
+         </td>
+       </tr>
+       <tr>
+         <td colspan="3"><div id="map"></div></td>
+       </tr>
+       <tr>
+         <td><div id="scale"></div></td>
+         <td/>
+         <td align="right"><div id="position"></div></td>
+       </tr>
+     </table>
+     <div id="nodelist">Click on the map to get feature infos</div>
+  </body>
+</html>

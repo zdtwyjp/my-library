@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    
+    <link rel="stylesheet" href="../OpenLayers/theme/default/style.css" type="text/css">
+	<link rel="stylesheet" href="style.css" type="text/css">
+	<script src="../OpenLayers/lib/OpenLayers.js"></script>
+	
+	<style type="text/css">
+		.smallmap {
+		    width: 1000px;
+		    height: 500px;
+		    border: 1px solid #ccc;
+		}
+	</style>
+    
+    <script type="text/javascript">
+//     90.99828946798328,29.62512671723509,91.02780446798329,29.65078471723509
+        var lon = 90.99828946798328;
+        var lat = 29.62512671723509;
+        var zoom = 0;
+        var map;
+        
+        function init(){
+			map = new OpenLayers.Map('map',  {
+				numZoomLevels: 30
+			});
+			var diming = new OpenLayers.Layer.WMS(
+	            "lskfq:0_diming", 
+	            "http://localhost:8899/geoserver/lskfq/wms",
+	            {
+	              layers: 'lskfq:0_diming',
+	              styles: '',
+	              format: 'image/png',
+	              isBaseLayer: 'true'
+	            }
+            );
+			map.addLayer(diming);
+            
+            var daoluzhongxingxian = new OpenLayers.Layer.WMS(
+	            "lskfq:1_daoluzhongxingxian", 
+	            "http://localhost:8899/geoserver/lskfq/wms",
+	            {
+	              layers: 'lskfq:1_daoluzhongxingxian,lskfq:2_daolubianxian,lskfq:2_daolushiyu,lskfq:3_jianzhuwu',
+	              styles: '',
+	              format: 'image/png',
+	              transparent: 'true'
+	            },
+	            {
+	            	opacity: 1 
+	            }
+            );
+            map.addLayer(daoluzhongxingxian);
+            
+//             var daolubianxian = new OpenLayers.Layer.WMS(
+//  	            "lskfq:2_daolubianxian", 
+//  	            "http://localhost:8899/geoserver/lskfq/wms",
+//  	            {
+//  	              layers: 'lskfq:2_daolubianxian',
+//  	              styles: '',
+//  	              format: 'image/png',
+// 	              transparent: 'true'
+//  	            }
+//              );
+//              map.addLayer(daolubianxian);
+            
+//             var daolushiyu = new OpenLayers.Layer.WMS(
+//             	'lskfq:2_daolushiyu',
+//             	'http://localhost:8899/geoserver/lskfq/wms',
+//             	{
+//             	  layers: 'lskfq:2_daolushiyu',
+//    	              styles: '',
+//    	              format: 'image/png',
+//   	              transparent: 'true'
+//             	}
+//             );
+//             map.addLayer(daolushiyu);
+            
+//             var jianzhuwu = new OpenLayers.Layer.WMS(
+//                 	'lskfq:3_jianzhuwu',
+//                 	'http://localhost:8899/geoserver/lskfq/wms',
+//                 	{
+//                 	  layers: 'lskfq:3_jianzhuwu',
+//        	              styles: '',
+//        	              format: 'image/png',
+//       	              transparent: 'true'
+//                 	}
+//                 );
+//                 map.addLayer(jianzhuwu);
+
+            map.setCenter(new OpenLayers.LonLat(lon, lat), zoom);
+            map.addControl( new OpenLayers.Control.LayerSwitcher() );
+        }
+    </script>
+  </head>
+  <body onload="init()">
+
+    <div id="map" class="smallmap"></div>
+    
+  </body>
+</html>
+
+
+
+
