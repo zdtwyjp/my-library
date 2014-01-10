@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>SuperMap iClient for JavaScript:TiledDynamicRESTLayer</title>
+<!--引用需要的脚本的相对路径-->
+<script src="../supermap/forJavaScript/libs/SuperMap.Include.js"></script>
+<script type="text/javascript">
+	//声明变量map、layer、url；
+	var map, layer, url = "http://localhost:8090/iserver/services/map-world/rest/maps/World";
+	//创建地图控件
+	function init() {
+		map = new SuperMap.Map("map", {
+			controls : [ new SuperMap.Control.ScaleLine(),
+					new SuperMap.Control.PanZoomBar(),
+					new SuperMap.Control.Navigation({
+						dragPanOptions : {
+							enableKinetic : true
+						}
+					}) ]
+		});
+		//创建分块动态REST图层，该图层显示iserver java 6R 服务发布的地图，
+		//其中“world”为图层名称，url图层的服务地址，{transparent: true}设置到url的可选参数，
+		layer = new SuperMap.Layer.TiledDynamicRESTLayer("World", url, null, {
+			maxResolution : "auto"
+		});
+		layer.events.on({
+			"layerInitialized" : addLayer
+		});
+	}
+	function addLayer() {
+		//将Layer图层加载到Map对象上
+		map.addLayer(layer);
+		//出图，map.setCenter函数显示地图
+		map.setCenter(new SuperMap.LonLat(0, 0), 0);
+	}
+</script>
+</head>
+<body onload="init()">
+	<!--地图显示的div-->
+	<div id="map"
+		style="position: absolute; left: 0px; right: 0px; width: 800px; height: 500px;">
+	</div>
+</body>
+</html>
