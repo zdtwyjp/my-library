@@ -12,6 +12,7 @@
 		<module>my-library-javascript</module>
 		<module>my-library-doc</module>
 		<module>my-library-openlayers</module>
+		<module>my-library-extjs-console</module>
 	</modules>
 
 	<properties>
