@@ -1,0 +1,17 @@
+/*
+  xFocus
+------------------------------------------*/
+#xFocus{width:500px;height:261px;} /* 独立设定展示区域宽高 */
+.focus{width:500px;height:261px;overflow:hidden;position:relative;left:0;top:0;font-size:14px;}
+.focus .focus-box{width:500px;height:200px;overflow:hidden;position:relative;left:0;top:0;}
+.focus .focus-pics{position:absolute;left:0;top:0;width:100000px;height:261px;display:block;}
+.focus .focus-box a{display:block;zoom:1;}
+.focus .focus-box a img{display:block;border:0;}
+.focus .controls{position:absolute;width:100%;left:0;bottom:0;}
+.focus .controls ul,.focus .controls li{margin:0;padding:0;list-style:none;}
+.focus .controls .bg{width:500px;height:45px;background-color:#000000;filter:alpha(opacity=30);opacity:0.3;-moz-opacity:0.3;}
+.focus .controls .info{position:absolute;left:0;top:0;z-index:1;color:#fff;padding:8px 0 0 5px;font-weight:700;font-size:18px;}
+.focus .controls .info b{display:block;font-size:14px;}
+.focus .controls .l-btn{position:absolute;right:10px;bottom:5px;z-index:2;color:#fff;font-size:12px;}
+.focus .controls .l-btn li{float:left;width:16px;height:16px;text-align:center;margin-left:4px;border:1px #454544 solid;line-height:16px;cursor:pointer;background:#000;font-family:Tahoma,Arial,Simsun;color:#fff;}
+.focus .controls .l-btn li.selected{width:18px;height:18px;line-height:18px;margin-top:-2px;background:#AF0000;border:1px #454544 solid;font-weight:bold;color:#FFF64E;}

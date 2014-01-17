@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.fxpgy.lfd.usercenter.domain.SysManager"
+		table="SYS_MANAGER" lazy="false" dynamic-update="true">
+		<id name="smanId" type="java.lang.Long">
+			<column name="SMAN_ID" scale="0" />
+			<generator class="com.fxpgy.lfd.core.IdGenerator" />
+		</id>
+		<property name="smanName" type="java.lang.String">
+			<column name="SMAN_NAME" length="256" not-null="true" />
+		</property>
+		<property name="smanLoginName" type="java.lang.String">
+			<column name="SMAN_LOGIN_NAME" length="64" not-null="true" />
+		</property>
+		<property name="smanPwd" type="java.lang.String">
+			<column name="SMAN_PWD" length="64" not-null="true" />
+		</property>
+		<property name="smanEmail" type="java.lang.String">
+			<column name="SMAN_EMAIL" length="256" />
+		</property>
+		<property name="smanTel" type="java.lang.String">
+			<column name="SMAN_TEL" length="64" />
+		</property>
+		<property name="smanRemark" type="java.lang.String">
+			<column name="SMAN_REMARK" length="1024" />
+		</property>
+		<property name="smanIsStop" type="java.lang.Boolean">
+			<column name="SMAN_IS_STOP" not-null="true" />
+		</property>
+		
+		<property name="createTime" type="java.util.Date">
+			<column name="createTime" />
+		</property>
+		
+		<property name="loginedTime" type="java.util.Date">
+			<column name="loginedTime" />
+		</property>
+		
+		<property name="loginedCount" type="java.lang.Integer">
+			<column name="loginedCount" />
+		</property>
+		
+		<property name="handledOrders" type="java.lang.Integer">
+			<column name="handledOrders" />
+		</property>
+		
+		<property name="handlingOrders" type="java.lang.Integer">
+			<column name="handlingOrders" />
+		</property>
+		
+		
+		<property name="updateTime" type="java.util.Date"
+			column="updateTime" />
+	</class>
+</hibernate-mapping>

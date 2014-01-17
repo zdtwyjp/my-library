@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop-3.0.xsd 
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-3.0.xsd 
+		http://www.springframework.org/schema/mvc 
+		http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd 
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+		
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+	
+	<mvc:annotation-driven />
+	<!-- 开启controller注解支持 -->
+    <!-- 注：如果base-package=com.fxpgy 则注解事务不起作用 TODO 读源码 -->
+	<context:component-scan base-package="com.fxpgy.**.controller">
+		<context:include-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+
+	<!-- sys bean -->
+<!-- 	<bean id="beanNameViewResolver" -->
+<!-- 		class="org.springframework.web.servlet.view.BeanNameViewResolver" /> -->
+<!-- 	<bean id="beanNameUrlMapping" -->
+<!-- 		class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"> -->
+<!-- 		<property name="order"> -->
+<!-- 			<value>1</value> -->
+<!-- 		</property> -->
+<!-- 	</bean> -->
+
+	<!-- 视图解析器 -->
+<!-- 	<bean id="viewResolver" -->
+<!-- 		class="org.springframework.web.servlet.view.InternalResourceViewResolver"> -->
+<!-- 		<property name="viewClass"> -->
+<!-- 			<value>org.springframework.web.servlet.view.JstlView</value> -->
+<!-- 		</property> -->
+<!-- 		<property name="prefix"> -->
+<!-- 			<value>/WEB-INF/views/</value> -->
+<!-- 		</property> -->
+<!-- 		<property name="suffix"> -->
+<!-- 			<value>.jsp</value> -->
+<!-- 		</property> -->
+<!-- 	</bean> -->
+
+<!-- 	<bean id="exceptionResolver" -->
+<!-- 		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver"> -->
+<!-- 		<property name="defaultErrorView"> -->
+<!-- 			<value>errorPage</value> -->
+<!-- 		</property> -->
+<!-- 		<property name="exceptionMappings"> -->
+<!-- 			<props> -->
+<!-- 				<prop key="com.adtech.library.exception.MessageRuntimeException">errorPage</prop> -->
+<!-- 				<prop key="java.lang.Exception">errorPage</prop> -->
+<!-- 			</props> -->
+<!-- 		</property> -->
+<!-- 	</bean> -->
+
+
+	<!-- validate -->
+	<!-- <bean id="validatorFactory" -->
+	<!-- class="com.jbetter.spring.validator.DefaultValidatorFactory"> -->
+	<!-- <property name="validationConfigLocations"> -->
+	<!-- <list> -->
+	<!-- <value>/WEB-INF/adlib-validation.xml</value> -->
+	<!-- <value>/WEB-INF/validator-rules.xml</value> -->
+	<!-- </list> -->
+	<!-- </property> -->
+	<!-- </bean> -->
+<!---->
+	<!-- <bean id="beanValidator" -->
+	<!-- class="com.jbetter.spring.validator.BeanValidator"> -->
+	<!-- <property name="validatorFactory" ref="validatorFactory" /> -->
+	<!-- </bean> -->
+
+<!-- 	<bean id="methodNameResolver" -->
+<!-- 		class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver"> -->
+<!-- 		<property name="paramName"> -->
+<!-- 			<value>action</value> -->
+<!-- 		</property> -->
+<!-- 	</bean> -->
+
+	<!-- <bean id="urlMapping" -->
+	<!-- class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping"> -->
+	<!-- <property name="order"> -->
+	<!-- <value>0</value> -->
+	<!-- </property> -->
+	<!-- <property name="mappings"> -->
+	<!-- <props> -->
+	<!-- 项目发布时请删除 -->
+	<!-- <prop key="/testT.htm"> -->
+	<!-- testTController -->
+	<!-- </prop> -->
+	<!-- </props> -->
+	<!-- </property> -->
+	<!-- </bean> -->
+
+	<!-- 项目发布时请删除 -->
+	<!-- <bean name="testTController" class="com.fxpgy.demo.controller.TestTController"/> -->
+
+</beans>

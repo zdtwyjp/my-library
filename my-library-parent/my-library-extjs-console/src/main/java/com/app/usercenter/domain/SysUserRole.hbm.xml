@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping>
+	<!-- 
+		Created by the Middlegen Hibernate plugin 2.2
+		
+		http://boss.bekk.no/boss/middlegen/
+		http://www.hibernate.org/
+	-->
+
+	<class name="com.fxpgy.lfd.usercenter.domain.SysUserRole"
+		table="SYS_USER_ROLE" lazy="false" dynamic-update="true">
+
+		<id name="suroId" type="java.lang.Long">
+            <column name="SURO_ID" scale="0" />
+			<generator class="com.fxpgy.lfd.core.IdGenerator" />
+		</id>
+
+	
+		<!-- Associations -->
+
+		<!-- uni-directional many-to-one association to SysRole -->
+		<!-- modified by liliang -->
+		<many-to-one name="role"
+			class="com.fxpgy.lfd.usercenter.domain.SysRole">
+			<column name="SURO_SROL_ID" />
+		</many-to-one>
+	
+	<!-- 原来的
+		<many-to-one name="user"
+			class="cn.com.adtech.riss2.domain.SysManager" update="false" insert="false">
+			<column name="SURO_SMAN_ID" />
+		</many-to-one>
+ -->		
+ 	<!-- 于10.08.11修改insert="true" -->
+		<many-to-one name="user"
+			class="com.fxpgy.lfd.usercenter.domain.SysManager" update="true" insert="true">
+			<column name="SURO_SMAN_ID" />
+		</many-to-one>
+		<!-- 
+		<property name="sysUserId" type="java.lang.Long" column="SURO_SUIN_ID"/>
+ -->
+	</class>
+</hibernate-mapping>

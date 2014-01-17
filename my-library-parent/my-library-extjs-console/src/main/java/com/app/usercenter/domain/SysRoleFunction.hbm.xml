@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping>
+
+	<class name="com.fxpgy.lfd.usercenter.domain.SysRoleFunction"
+		table="SYS_ROLE_FUNCTION" lazy="false" dynamic-update="true">
+		<id name="srfuId" type="java.lang.Long" column="SRFU_ID">
+			<generator class="com.fxpgy.lfd.core.IdGenerator" />
+		</id>
+		<many-to-one name="sysFunction"
+			class="com.fxpgy.lfd.usercenter.domain.SysFunction" insert="true"
+			update="true">
+			<column name="SRFU_SFUN_ID" />
+		</many-to-one>
+		<many-to-one name="sysRole"
+			class="com.fxpgy.lfd.usercenter.domain.SysRole" insert="true"
+			update="true">
+			<column name="SRFU_SROL_ID" />
+		</many-to-one>
+	</class>
+</hibernate-mapping>

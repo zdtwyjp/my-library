@@ -1,0 +1,613 @@
+/** 页面中间部分布局 **/
+.left_container {
+	float:left;
+	width:235px;
+}
+.right_container {
+	float:left;
+	margin-left:10px;
+	width:750px;
+}
+
+/** 登录框 **/
+.login_box {
+	height:226px;
+	padding-left:5px;
+	padding-right:5px;
+	border:1px solid #CCC;
+	background:url(../images/platform/login_bg.jpg) repeat-x left bottom;
+	overflow: hidden;
+}
+
+.login_box .logined {
+	margin-top:5px;
+}
+
+.login_box .logined .login_user_photo{
+	float:left;
+	margin-left:5px;
+	width:100px;
+	height:120px;
+	padding:3px;
+	border:1px solid #ccc;
+}
+
+.login_box .logined .name{
+	color:#FF3C02;
+	margin-left:6px;
+	font-size:14px;
+}
+
+.login_box .logined .login_user_photo img {
+	border:0px;
+	width:100px;
+	height:120px;
+}
+
+.login_box .logined .logined_info{
+	float:left;
+	width:90px;
+	margin-left:10px;
+	line-height:1.6;
+}
+
+.login_box .logined .logined_info a{
+	font-size:12px;
+	font-weight:bold;
+}
+
+.login_box h2.box_title{
+	position:relative;
+	margin:0px;
+	padding:0px;
+	height:36px;
+	color:#010101;
+	line-height:36px;
+	font-size:14px;
+	font-weight:bold;
+	text-indent:18px;
+	background:url(../images/platform/login_icon.jpg) no-repeat 0px 10px;
+	border-bottom:1px dashed #ccc;
+}
+
+.login_box span.errorMsg{
+	position:relative;
+	left:0px;
+	top:-32px;
+	display:block;
+	margin-top:5px;
+	text-align:right;
+	font-size:12px;
+	color:#f00;
+}
+
+.login_box table {
+	margin-top:10px;
+	margin-left:10px;
+	border-collapse: collapse;
+}
+.login_box td {
+	font-size:14px;
+	height:30px;
+	color:#4D4D4D;
+}
+.login_box .login_form_textbox{
+	height:18px;
+	line-height: 18px;
+	font-size:14px;
+	width:120px;
+}
+
+.login_box .btn_login{
+	display:block;
+	margin-top:10px;
+	margin-bottom:10px;
+	border:0px;
+	width:80px;
+	height:36px;
+	background: url(../images/platform/login_button.png) no-repeat 0px 0px;
+	cursor:pointer;
+}
+
+.login_box_nav {
+	border-top:1px dashed #ccc;
+}
+
+/** 排行 **/
+.rank{
+	margin-top:10px;
+	border:1px solid #CCC;
+	width:100%;
+	float:left;
+}
+
+.rank .tab_nav {
+		height:36px;
+		border-bottom:1px solid #ccc;
+ 		background:url(../images/platform/titletop_bg.jpg) repeat-x left bottom;
+}
+
+.rank .tab_nav a{
+	display: block;
+	float:left;
+	width:82px;
+	height:37px;
+	line-height:37px;
+	font-size:14px;
+	text-decoration:none;
+	text-align:center;
+	color:#333;
+}
+.rank .tab_nav a:hover{
+	color:#CC0300;
+}
+
+.rank .tab_nav a.cur{
+	color:#000;
+	font-size:14px;
+	font-weight:bold;
+	height:37px;
+	line-height:37px;
+	background-color:#fff;
+	border-left:1px solid #ccc;
+	border-right:1px solid #ccc;
+	border-bottom:0px;
+}
+
+.rank .tab_nav a.left_cur{
+	border-left:0px;
+}
+
+.rank ul.rank_users{
+	clear:both;
+	display: block;
+	margin: 0px;
+	padding: 0px;
+	float:left;
+	width:100%;
+	margin-bottom: 10px;
+}
+
+.rank .rank_users li{
+	clear:both;
+	float:left;
+	width:100%;
+	display: block;
+	margin: 0px;
+}
+
+.rank .rank_users .user_photo{
+	float:left;
+	display:block;
+	width:48px;
+	height:48px;
+	border:1px solid #ccc;
+	padding:1px;
+	margin:10px 10px auto 10px;
+}
+
+.rank .rank_users .user_photo img{
+	border:0px;
+	width:48px;
+	height:48px;
+}
+
+.rank .rank_users p {
+	float:left;
+	margin-top:15px;
+	line-height: 20px;
+	color:#4E4E4E;
+}
+
+
+/** 排行下面的广告条 **/
+.left_ad_underrank{
+	clear:both;
+	margin-top:10px;
+	height:423px;
+	overflow: hidden;
+}
+
+/** 反馈 **/
+.feedback{
+	padding-bottom:5px;
+}
+.feedback textarea{
+	margin-top:10px;
+	margin-left:10px;
+	width:206px;
+	height:195px;
+	border:1px solid #ccc;
+}
+.feedback .submit_btn {
+	display:block;
+	border:0px;
+	width:111px;
+	height:34px;
+	margin-left:60px;
+	margin-top:10px;
+	cursor:pointer;
+	background:url(../images/platform/sub_button.jpg) no-repeat 0px 0px;
+}
+
+/** 在线客服 **/
+.customer_service_online {
+	margin-top:10px;
+	height:300px;
+	background:url(../images/platform/online_bg.jpg) repeat-x left bottom;
+}
+.customer_service_online .content{
+	height:265px;
+	background:url(../images/platform/online_img.png) no-repeat right bottom;
+}
+
+.customer_service_online .box {
+	margin-top:0px;
+}
+
+table.service_persons {
+	border:0px;
+	border-collapse:collapse;
+}
+
+.service_persons td{
+	height:50px;
+}
+
+.service_persons td a{
+	color:#004F8A;
+}
+
+.service_persons .p_photo{
+	display:block;
+	width:49px;
+	height:49px;
+	border:1px solid #ccc;
+	padding:1px;
+	margin:10px 10px auto 10px;
+}
+
+.service_persons .p_photo .p_photo img{
+	border:0px;
+	width:48px;
+	height:48px;
+}
+
+
+/** 结算流程及公告部分 **/
+ul.right_top_info {
+	display: block;
+	margin: 0px;
+	padding:0px;
+	list-style: none;
+}
+
+.right_top_info .fenyong{
+	width:487px;
+	float:left;
+	display: block;
+}
+
+/** 分佣金额 **/
+.fenyong_countshow {
+	color:#E60C00;
+	height:47px;
+	line-height:47px;
+	text-indent:15px;
+	font-size:20px;
+	font-weight:bold;
+	border:1px solid #ccc;
+	border-bottom:0px;
+	background:url(../images/platform/guanggao_topbg.jpg) repeat-x left bottom;
+	font-family: '微软雅黑','黑体';
+}
+
+/** 结算流程 **/
+.jiesuan_liucheng {
+	height:179px;
+	border:1px solid #E5DB55;
+	background-color:#FFFBCC;
+	overflow: hidden;
+}
+
+/** 公告 **/
+.bulletin {
+	float:left;
+	margin-top:0px;
+	width:248px;
+	height:227px;
+	margin-left:10px;
+}
+.bulletin_content {
+	margin:0px;
+	padding:0px;
+	list-style: none;
+	display:block;
+	height:186px;
+	overflow: auto;
+}
+
+.bulletin_content li{
+	list-style: url("../images/platform/dot.jpg");
+	margin:10px auto 10px 20px;
+}
+
+/** 中间广告位-悬赏 **/
+.center_ad2 {
+	margin-top:10px;
+	clear:both;
+	width:747px;
+	height:264px;
+	border:1px solid #ccc;
+	background-color:#eee;
+	background-image: url("../images/1.jpg")
+}
+
+/** 项目展示模块 **/
+.project_mod{
+	clear:both;
+	margin-top:10px;
+	width:747px;
+	height:410px;
+}
+
+.project_mod_content {
+	color: #4D4D4D;
+	height:375px;
+	overflow: hidden;
+}
+
+.project_mod_content .previous_page_div{
+	float:left;
+	width:28px;
+	height:374px;
+}
+
+.project_mod_content ul.project_list{
+	float:left;
+	display: block;
+	padding:0px;
+	margin:0px;
+	width:689px;
+	height:374px;
+}
+.project_mod_content ul.project_list li{
+	float:left;
+	margin-left:1px;
+	list-style: none;
+	display: block;
+	width:225px;
+	height:370px;
+}
+
+/** 项目展示的翻页插件修改样式begin **/
+
+.project_mod_content .bx-wrapper {
+	
+}
+
+.project_mod_content .bx-wrapper .bx-prev{
+	display:block;
+	width:28px;
+	height:61px;
+	position:relative;
+	left:0px;
+	top:-239px;
+	background:url(../images/platform/previous.jpg) no-repeat left center;
+}
+
+.project_mod_content .bx-wrapper .bx-next{
+	display:block;
+	width:28px;
+	height:61px;
+	position:relative;
+	top:-300px;
+	left:720px;
+	background:url(../images/platform/next.jpg) no-repeat left center;
+}
+
+.project_mod_content .bx-wrapper .bx-window{
+	position: relative;
+	left:30px;
+	top:0px;
+}
+
+/** 项目展示的翻页插件修改样式end **/
+
+.project_mod_content .next_page_div{
+	float:right;
+	width:28px;
+	height:374px;
+}
+
+.project_mod_content .btn_previous_projects{
+	display:block;
+	border:0px;
+	width:28px;
+	height:61px;
+	margin-top:150px;
+	cursor:pointer;
+	background:url(../images/platform/previous.jpg) no-repeat 0px 0px;
+}
+
+.project_mod_content .btn_next_projects{
+	display:block;
+	border:0px;
+	width:28px;
+	height:61px;
+	margin-top:150px;
+	cursor:pointer;
+	background:url(../images/platform/next.jpg) no-repeat 0px 0px;
+}
+
+.project_mod_content .project_photo{
+	display:block;
+	width:210px;
+	height:127px;
+	margin-top:10px;
+	margin-left:6px;
+	overflow: hidden;
+}
+
+.project_mod_content .project_photo img{
+	margin:0px;
+	border:0px;
+	width:210px;
+	height:127px;
+}
+
+.project_mod_content .p_title {
+	width:210px;
+	margin-left:7px;
+	padding:0px 5px auto 5px;
+	height:45px;
+	font-size:12px;
+	line-height:18px;
+	overflow: hidden;
+}
+
+.project_mod_content .p_title span.proj_name{
+	float:left;
+	width:146px;
+	height:40px;
+	margin-top:7px;
+	overflow:hidden;
+}
+
+.project_mod_content .p_title span.buttons{
+	float:right;
+	width:60px;
+	height:40px;
+  margin-top:3px;
+  overflow: hidden;
+}
+
+span.buttons input.btn_look{
+	margin-left:10px;
+}
+
+.project_mod_content .p_content{
+	width:210px;
+	height:112px;
+	clear:both;
+	margin-left:7px;
+	overflow: hidden;
+}
+
+.project_mod_content .p_content .info{
+	display:block;
+	padding:0px;
+	margin:0px;
+	font-size:12px;
+	line-height:24px;
+}
+
+.project_mod_content .p_content .info .highlight{
+	font-size:20px;
+	font-weight:bold;
+	line-height:normal;
+	color:#FF3C00;
+	font-family:Arial,Times,Tahoma,"Times New Roman",Georgia,serif;
+}
+
+.project_mod_content .p_buttons{
+	width:210px;
+	margin-top:10px;
+	margin-left:6px;
+}
+
+.project_mod_content .p_buttons span{
+	float:left;
+	display:block;
+	width:76px;
+	height:53px;
+	border:1px solid #E8D958;
+	background-color: #FFFBCC;
+	text-align:center;
+	line-height:26px;
+	color:#FF3B00;
+}
+
+.project_mod_content .p_buttons span b{
+	display: block;
+	font-size:20px;
+	font-weight:bold;
+	text-align: center;
+	color:#FE5400;
+}
+
+.project_mod_content .p_buttons .btn_order{
+	float:right;
+	display:block;
+	border:0px;
+	width:126px;
+	height:58px;
+	background: url(../images/platform/add_icon.jpg) no-repeat 0px 0px;
+	cursor:pointer;
+}
+
+.project_mod_content .p_buttons .btn_over{
+  float:right;
+  display:block;
+  border:0px;
+  width:126px;
+  height:58px;
+  background: url(../images/platform/over_icon3.jpg) no-repeat 0px 0px;
+  cursor:default;
+}
+
+.project_mod_content .p_buttons .btn_willstart{
+  float:right;
+  display:block;
+  border:0px;
+  width:126px;
+  height:58px;
+  background: url(../images/platform/start_icon2.jpg) no-repeat 0px 0px;
+  cursor:default;
+}
+
+
+.project_mod_content span.hot_sale{
+	position:relative;
+	left:0px;
+	top:0px;
+	display: block;
+	font-size:12px;
+	width:55px;
+	height:16px;
+	line-height:16px;
+	text-align:center;
+	margin-bottom:2px;
+	color:#FFF;
+	background:#FF3D00 url(../images/platform/remai_icon2.jpg) no-repeat 0px 0px;
+}
+
+
+/** 本地推荐 **/
+.project_mod .project_local_recommend{
+	background:url(../images/platform/title1.jpg) no-repeat 14px 0px;
+}
+
+/** 高佣金推荐 **/
+.project_mod .project_high_commission{
+	background:url(../images/platform/title2.jpg) no-repeat 14px 0px;
+}
+
+/** 商业地产推荐 **/
+.project_mod .project_business{
+	background:url(../images/platform/title3.jpg) no-repeat 14px 0px;
+}
+
+/** 旅游地产推荐 **/
+.project_mod .project_travel{
+	background:url(../images/platform/title4.jpg) no-repeat 14px 0px;
+}
+
+/** 即将发布推荐 **/
+.project_mod .project_willstart{
+  background:url(../images/platform/title5.jpg) no-repeat 14px 0px;
+}
+
+.not_login{
+	font-size:12px;
+}

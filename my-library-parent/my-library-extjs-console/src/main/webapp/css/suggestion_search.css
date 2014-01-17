@@ -1,0 +1,76 @@
+@CHARSET "UTF-8";
+.vote{
+	width:66px;
+	height:29px;	
+	cursor:pointer;
+	border:0;
+	background: url('../images/suggestion/s_07.jpg') no-repeat;
+}
+
+.content{
+	color: #4e4e4e;
+}
+.info{
+	color:#8a8a8a;
+}
+
+.suggestion_box{
+	margin-top:20px;
+	padding-top:10px;
+	padding-bottom:10px;
+	width:900px;
+	min-height: 0px;
+	border: 1px solid #a9a9a9;
+	font-size: 12px;
+}
+
+.suggestion_box .imgLeft{
+	float: left;
+	width: 35px;
+	padding-left: 10px;
+	padding-top: 5px
+}
+
+.suggestion_box .contentbox{
+	border: 1px solid #DFDFDF;
+	margin-top: 15px;
+	margin-left: 18px;
+	margin-right: 18px;
+}
+
+.pt5{
+	padding-top: 10px
+}
+
+.pt10{
+	padding-top: 10px
+}
+
+.pl20{
+	padding-left: 20px
+}
+
+hr{
+	height:1;
+	border-top:1px dotted #DFDFDF
+}
+
+.ml10{
+	margin-left: 10px
+}
+/*
+pre{
+	word-wrap:break-word;
+	word-break:break-all;/*前两项是IE独有属性，有了这两行IE没问题了*/
+	-moz-binding: url('../../../wordwrap.xml#wordwrap');/*这个是针对FF的，xml文件位置可以自己指定
+	word-break:break-all;
+	white-space: moz-pre-wrap;
+	white-space: pre-wrap;
+	white-space: -moz-pre-wrap;
+	white-space: -pre-wrap;
+	white-space: -o-pre-wrap;
+	word-wrap: break-word;
+	white-space : normal ; 
+	overflow: hidden;
+		
+}*/

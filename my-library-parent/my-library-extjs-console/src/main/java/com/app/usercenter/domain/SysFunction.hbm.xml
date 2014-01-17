@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+	<class name="com.fxpgy.lfd.usercenter.domain.SysFunction" table="SYS_FUNCTION"
+		lazy="false" dynamic-update="true">
+		<cache usage="read-write" />
+		<id name="sfunId" type="java.lang.Long" column="SFUN_ID">
+			<generator class="com.fxpgy.lfd.core.IdGenerator" />
+		</id>
+		<property name="sfunName" type="java.lang.String" column="SFUN_NAME"
+			not-null="true" length="128" />
+		<property name="sfunDesc" type="java.lang.String" column="SFUN_DESC"
+			length="512" />
+		<property name="sfunUrl" type="java.lang.String" column="SFUN_URL"
+			length="512" />
+		<property name="sfunIndex" column="SFUN_INDEX" type="java.lang.Short" />
+		<property name="sfunCode" type="java.lang.String" column="SFUN_CODE"
+			length="64" />
+		<property name="sfunIsHidden" type="java.lang.Boolean"
+			column="SFUN_IS_HIDDEN" />
+		<many-to-one name="parentCatalog" class="com.fxpgy.lfd.usercenter.domain.SysCatalog">
+			<column name="SFUN_SCAT_ID" />
+		</many-to-one>
+	</class>
+</hibernate-mapping>

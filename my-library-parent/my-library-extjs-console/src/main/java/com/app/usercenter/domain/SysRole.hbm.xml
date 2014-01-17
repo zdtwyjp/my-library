@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping>
+
+	<class name="com.fxpgy.lfd.usercenter.domain.SysRole"
+		table="SYS_ROLE" lazy="false" dynamic-update="true">
+		<cache usage="read-write" />
+		<id name="srolId" type="java.lang.Long" column="SROL_ID">
+			<generator class="com.fxpgy.lfd.core.IdGenerator" />
+		</id>
+		<property name="srolName" type="java.lang.String" column="SROL_NAME"
+			not-null="true" length="128" />
+		<property name="srolCode" type="java.lang.String" column="SROL_CODE"
+			not-null="true" length="64" />
+		<property name="srolDesc" type="java.lang.String" column="SROL_DESC"
+			length="512" />
+		<property name="srolIsSysRole" type="java.lang.Boolean"
+			column="SROL_IS_SYS_ROLE" />
+		<set name="sysRoleFunctions" lazy="false" cascade="delete"
+			inverse="true">
+			<key>
+				<column name="SRFU_SROL_ID" />
+			</key>
+			<one-to-many
+				class="com.fxpgy.lfd.usercenter.domain.SysRoleFunction" />
+		</set>
+		
+		<property name="updateTime" type="java.util.Date"
+			column="updateTime" />
+	</class>
+</hibernate-mapping>
