@@ -6,12 +6,12 @@
 </head>
 <body>
 	<div>
-		<h1>我正在学习使用Freemarker生成静态文件！</h1>
+		<h1>${description}</h1>
 	</div>
 	<div>
-			<h3>陈靖仇</h3>
-			<h3>玉儿</h3>
-			<h3>宇文拓</h3>
+		<#list nameList as t>
+			<h3>${t}</h3>
+		</#list>
 	</div>
 </body>
 </html>

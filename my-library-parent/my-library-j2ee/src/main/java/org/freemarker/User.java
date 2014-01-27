@@ -1,4 +1,4 @@
-package org.thirdlib.freemarker;
+package org.freemarker;
 
 public class User {
 	private String userName;

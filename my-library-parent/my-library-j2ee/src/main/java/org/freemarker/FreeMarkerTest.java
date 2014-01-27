@@ -1,4 +1,4 @@
-package org.thirdlib.freemarker;
+package org.freemarker;
 
 import java.io.BufferedWriter;
 import java.io.File;

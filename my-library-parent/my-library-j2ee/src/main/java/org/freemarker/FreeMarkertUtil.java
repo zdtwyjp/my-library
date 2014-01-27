@@ -1,4 +1,4 @@
-package org.thirdlib.freemarker;
+package org.freemarker;
 
 import java.io.File;
 import java.io.IOException;
