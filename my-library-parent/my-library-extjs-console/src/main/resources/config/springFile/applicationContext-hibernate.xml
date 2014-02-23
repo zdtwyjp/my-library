@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+       ">
+
+	<!-- 加载属性文件 -->
+	<bean id="placeholderConfig"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:config/properties/jdbc.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- 从以下查找的资料 http://blog.csdn.net/peirenlei/archive/2008/04/18/2304795.aspx -->
+	<!-- 连接池配置 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="${jdbc.driverClassName}" />
+		<property name="jdbcUrl" value="${jdbc.url}" />
+		<!-- 密码加密时注释 -->
+		<!-- 
+		<property name="user" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />-->
+		<!-- 加密时取消注释 -->
+		<property name="properties" ref="dataSourcePropertiesEncrypt"/>
+
+		<!-- 初始化时获取的连接数，取值应在minPoolSize与maxPoolSize之间 Default: 3 -->
+		<property name="initialPoolSize" value="${c3p0.initialPoolSize}" />
+
+		<!-- 连接池中保留的最小连接数 Default: 3 -->
+		<property name="minPoolSize" value="${c3p0.minPoolSize}" />
+
+		<!-- 连接池中保留的最大连接数。Default: 15 -->
+		<property name="maxPoolSize" value="${c3p0.maxPoolSize}" />
+
+		<!-- 最大空闲时间,maxIdleTime内未使用则连接被丢弃。若为0则永不丢弃。单位毫秒Default: 0 -->
+		<property name="maxIdleTime" value="${c3p0.maxIdleTime}" />
+
+		<!-- 当连接池里面的连接用完的时候，C3P0一下获取的新的连接数 Default: 3 -->
+		<property name="acquireIncrement" value="${c3p0.acquireIncrement}" />
+
+		<!-- JDBC的标准参数，用以控制数据源内加载的PreparedStatements数量。 但由于预缓存的statements属于单个connection而不是整个连接池。所以设置这个参数需要考虑到多方面的因素。 
+			如果maxStatements与maxStatementsPerConnection均为0， 则缓存被关闭最大的PreparedStatement的数量 
+			Default: 0 -->
+		<property name="maxStatements" value="${c3p0.maxStatements}" />
+
+		<!-- 每隔60秒检查连接池里的空闲连接 ，单位是秒 -->
+		<property name="idleConnectionTestPeriod" value="${c3p0.idleConnectionTestPeriod}" />
+
+		<!-- 定义在从数据库获取新连接失败后重复尝试的次数。Default: 30 -->
+		<property name="acquireRetryAttempts" value="${c3p0.acquireRetryAttempts}" />
+
+		<!-- 当连接池用完时客户端调用getConnection()后等待获取新连接的时间，超时后将抛出SQLException, 如设为0则无限期等待。单位毫秒。Default: 
+			0 -->
+		<property name="checkoutTimeout" value="${c3p0.checkoutTimeout}" />
+
+		<!-- 每次都验证连接是否可用,因性能消耗大请只在需要的时候使用它。 如果设为true那么在每个connection提交的时候都将校验其有效性。 
+			建议使用idleConnectionTestPeriod或automaticTestTable等方法来提升连接测试的性能。Default: false -->
+		<property name="testConnectionOnCheckout" value="${c3p0.testConnectionOnCheckout}" />
+
+		<!-- c3p0将建一张名为Test的空表，并使用其自带的查询语句进行测试。如果定义了这个参数, 那么属性preferredTestQuery将被忽略。你不能在这张Test表上进行任何操作， 
+			它将只供c3p0测试 使用。Default: null -->
+		<property name="automaticTestTable" value="${c3p0.automaticTestTable}" />
+
+	</bean>
+
+	<!-- 数据库属性解析,需加密时取消注释 -->
+	 <bean id="dataSourcePropertiesEncrypt" class="com.fxpgy.common.util.DataSourcePropertiesEncryptFactoryBean"> 
+		 <property name="properties"> 
+			 <props> 
+				 <prop key="user">${jdbc.username}</prop> 
+				 <prop key="password">${jdbc.password}</prop> 
+				 <prop key="pd">fxpgy</prop> 
+			 </props> 
+		 </property> 
+	 </bean> 
+
+
+
+	<!-- Hibernate SessionFactory -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.cache.use_query_cache">true</prop>
+				<prop key="hibernate.cache.use_second_level_cache">true</prop>
+                <prop key="hibernate.cache.region.factory_class">org.hibernate.cache.EhCacheRegionFactory</prop>
+                <prop key="net.sf.ehcache.configurationResourceName">/config/cache/ehcache.xml</prop>
+			</props>
+		</property>
+		<property name="mappingDirectoryLocations">
+			<list>
+				<value>classpath*:/com/fxpgy/lfd/domain</value>
+				<value>classpath*:/com/fxpgy/demo/domain</value>
+				<value>classpath*:/com/fxpgy/lfd/usercenter/domain</value>
+			</list>
+		</property>
+		<!-- 配置注解实体路径 -->
+		<property name="packagesToScan" value="com.fxpgy.lfd.**.domain">
+		<!-- 
+			<list>
+				<value>classpath:/com/fxpgy/lfd/suggest/domain/</value>
+				<value>classpath:/com/fxpgy/lfd/usercenter/domain/</value>
+				
+				<value>com.fxpgy.lfd.suggest.domain.Suggestion</value>
+				<value>com.fxpgy.lfd.usercenter.domain.Consultant</value>
+				<value>com.fxpgy.lfd.project.domain.Customer</value>
+				<value>com.fxpgy.lfd.project.domain.Favorite</value>
+				<value>com.fxpgy.lfd.project.domain.Order</value>
+				<value>com.fxpgy.lfd.project.domain.Project</value>
+				<value>com.fxpgy.lfd.project.domain.Provinces</value>
+				<value>com.fxpgy.lfd.project.domain.Citys</value>
+				<value>com.fxpgy.lfd.project.domain.Countrys</value>
+				<value>com.fxpgy.lfd.project.domain.CountrysGroup</value>
+				<value>com.fxpgy.lfd.project.domain.ProjectSummary</value>
+				<value>com.fxpgy.lfd.project.domain.ProjectPhotoes</value>
+				<value>com.fxpgy.lfd.project.domain.Announcement</value>
+				<value>com.fxpgy.lfd.project.domain.ProjectComment</value>
+				<value>com.fxpgy.lfd.project.domain.InviteCode</value>
+				
+			</list>
+			 -->
+		</property>
+
+	</bean>
+	
+	<!-- 开启AOP监听 只对当前配置文件有效 -->
+	<aop:aspectj-autoproxy expose-proxy="true"/>
+	
+	<!-- 开启注解事务 只对当前配置文件有效 -->
+  	<tx:annotation-driven transaction-manager="txManager"/>
+
+	<!-- 事务管理器 -->
+	<bean id="txManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<!-- 事务的传播特性 -->
+	<tx:advice id="txAdvice" transaction-manager="txManager">
+		<tx:attributes>
+			<tx:method name="add*" propagation="REQUIRED" rollback-for="Exception" />
+			<tx:method name="del*" propagation="REQUIRED" rollback-for="Exception" />
+			<tx:method name="update*" propagation="REQUIRED" rollback-for="Exception" />
+			<tx:method name="save*" propagation="REQUIRED" rollback-for="Exception" />
+			<!--hibernate4必须配置为开启事务 否则 getCurrentSession()获取不到 -->
+			<tx:method name="get*" propagation="REQUIRED" read-only="true" />
+			<tx:method name="find*" propagation="REQUIRED" read-only="true" />
+			<tx:method name="query*" propagation="REQUIRED" read-only="true" />
+			<tx:method name="*" read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+
+	<aop:config expose-proxy="true">
+		<aop:pointcut id="tx_pointcut"
+			expression="execution(* com.fxpgy..service..*ServiceImpl.*(..))" />	
+
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="tx_pointcut" />
+	</aop:config>
+
+	<!-- 本地上传 -->
+	<bean id="uploadService" class="com.fxpgy.lfd.upload.impl.LocalUploadServiceImpl">
+		<property name="path" value="${downloadPath}" />
+	</bean>
+	
+	<!-- 初始化参数-->
+	<bean id="initParameterService" class="com.fxpgy.common.service.impl.InitParameterServiceImpl" init-method="init">
+		<property name="prefixPath" value="${prefixPath}" />
+	</bean>
+  <!-- 要调用的工作类 -->
+    <bean id="quartzJob" class="com.fxpgy.lfd.util.SearchJob"></bean>
+    <!-- 定义调用对象和调用对象的方法 -->
+    <bean id="jobtask"
+        class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <!-- 调用的类 -->
+        <property name="targetObject">
+            <ref bean="quartzJob" />
+        </property>
+        <!-- 调用类中的方法 -->
+        <property name="targetMethod">
+            <value>work</value>
+        </property>
+    </bean>
+    <!-- 
+    <bean id="quartzJob2" class="com.fxpgy.lfd.util.ConsultantcountJob"></bean>
+    <bean id="jobtask2"
+        class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject">
+            <ref bean="quartzJob2" />
+        </property>
+        <property name="targetMethod">
+            <value>work</value>
+        </property>
+    </bean>
+     -->
+    <!-- 定义触发时间 -->
+    <bean id="doTime"
+        class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="jobtask" />
+        </property>
+        <!-- cron表达式 -->
+        <property name="cronExpression">
+            <value>0 0/3 * * * ?</value>
+        </property>
+    </bean>
+   <!-- 
+   <bean id="doCount"
+        class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail">
+            <ref bean="jobtask2" />
+        </property>
+        <property name="cronExpression">
+            <value>0 0 0 15 * ?</value>
+        </property>
+    </bean>
+     -->
+    <!-- 总管理类 如果将lazy-init='false'那么容器启动就会执行调度程序  -->
+    <bean id="startQuertz" lazy-init="false" autowire="no"
+        class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <ref bean="doTime" />
+                <!-- 
+                <ref bean="doCount"/>
+                 -->
+            </list>
+        </property>
+    </bean>	
+</beans>

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+	<class name="com.fxpgy.lfd.usercenter.domain.SysCatalog"
+		table="SYS_CATALOG" lazy="false" dynamic-update="true">
+		<cache usage="read-write" />
+		<id name="scatId" type="java.lang.Long" column="SCAT_ID">
+			<generator class="com.fxpgy.lfd.core.IdGenerator" />
+		</id>
+		<property name="scatName" type="java.lang.String" column="SCAT_NAME"
+			not-null="true" length="128" />
+		<property name="scatDesc" type="java.lang.String" column="SCAT_DESC"
+			length="512" />
+		<property name="scatCode" type="java.lang.Short" column="SCAT_CODE" />
+		<many-to-one name="parentCatalog"
+			class="com.fxpgy.lfd.usercenter.domain.SysCatalog">
+			<column name="SCAT_PARENT_ID" />
+		</many-to-one>
+	</class>
+</hibernate-mapping>

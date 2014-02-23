@@ -1,0 +1,35 @@
+.clear{ clear:both}
+a{ color:#666; text-decoration:none}
+a:hover{ text-decoration:underline}
+.t10{ top:10px;}
+.t5{ top:5px;}
+.mt8{ margin-top:8px}
+.mb30{ margin-bottom:30px}
+.pt30{ padding-top:30px}
+.pl10{ padding-left:10px}
+.wrap{ background:url(../images/individualcenter/wrap.png) left top repeat-x; padding:15px 0 0 0;}
+.w990{ width:990px; margin:0 auto}
+.w732{ width:732px;}
+.gray{ color:#666}
+legend{ display:none}
+.nav_layer{ color:#333; padding-bottom:13px}
+.nav_layer .gray{ color:#666}
+.broker_header{ background:#fff; height:90px; position:relative}
+.login_list{ float:right; padding-top:5px; margin-right:15px}
+.login_list li{ display:inline; color:#666}
+.tel dt{color:#C92B2B; font-family:SimSun; line-height:24px; padding-left:36px}
+.tel dd{ color:#000; font:26px/18px Arial; padding-left:33px}
+
+.newVerBox{padding:15px 0;}
+.goWebApp{margin:0 auto;width:146px;height:41px;display:block;background:url(../images_2/reg_login/webapp.gif) no-repeat 0 0;text-indent:-9999px;overflow:hidden;}
+
+/* xConfirm */
+.xConfirmMask{width:100%;height:100%;position:absolute;left:0;top:0;background:#333;z-index:999;filter:alpha(opacity=50);-moz-opacity:0.5;opacity:0.5;}
+.xConfirm{width:340px;height:145px;position:absolute;left:50%;top:50%;margin-left:-120px;margin-top:-75px;z-index:9999;background:#fff;border:1px #454647 solid;font-size:12px;}
+.xConfirm .xConfirm-txt{line-height:20px;}
+.xConfirm .xConfirm-txt table{width:100%;height:100%;text-align:center;}
+.xConfirm .xConfirm-txt table td{padding:5px;zoom:1;}
+.xConfirm .xConfirm-opt{background:#eee;width:100%;height:50px;margin-top:10px;border-top:1px #E6E6E6 solid;font-weight:bold;font-size:14px;position:absolute;bottom:0;}
+.xConfirm .xConfirm-opt a{position:absolute;top:13px;line-height:120%;width:90px;height:26px;zoom:1;background:url(../images_2/infor/btn_bg.png) no-repeat;text-indent:-9999px;overflow:hidden;}
+.xConfirm .xConfirm-opt a.xConfirm-ok{left:25px;background-color:#2A67DB;background-position:0 0;border:0px #325495 solid;color:#fff;}
+.xConfirm .xConfirm-opt a.xConfirm-cancel{right:25px;background-color:#A9A8A8;background-position:0 -82px;border:0px #949494 solid;color:#f9f9f9;}

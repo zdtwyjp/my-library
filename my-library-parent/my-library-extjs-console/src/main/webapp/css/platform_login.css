@@ -1,0 +1,176 @@
+.login_form{
+  float:right;
+  width:440px;
+  height:385px;
+}
+
+.login_container{
+	clear:both;
+	margin-top:20px;
+	background:url(../images/platform/login/login_bg.jpg) no-repeat 0px 0px;
+	
+}
+
+.marquee {
+	width:384px;
+	height:38px;
+	overflow: hidden;
+}
+
+.marquee_div {
+  width:1060px;
+  overflow:hidden;	
+}
+
+.marquee_div a{
+	display: block;
+	width:200px;
+	overflow: hidden;
+	float:left;
+	white-space: nowrap;
+	margin-left: 10px;
+}
+
+.login_box {
+  width:384px;
+  height:345px;
+  font-size:14px;
+  border:1px solid #ccc;
+}
+
+.login_box_title {
+	display:block;
+	padding:0px;
+	margin:0px;
+  height:44px;
+  width:382px;
+  margin-top:1px;
+  margin-left:1px;
+  line-height:44px;
+  text-indent:10px;
+  font-size:16px;
+  font-weight:bold;
+  background:#ccc url(../images/platform/login/login_topbg.jpg) repeat-x 0px 0px;
+  font-family: '微软雅黑';
+  color:#FC6A17;
+}
+
+.login_box table{
+  margin:40px auto auto 30px;
+}
+
+.login_box td{
+    height:30px;
+    line-height: 150%;
+  }
+
+
+.login_btn {
+  cursor:pointer;
+  border:none;
+  width:176px;
+  height:31px;
+  padding:0px;
+  margin:0px;
+  background:url(../images/platform/login/login_buton.jpg) no-repeat 0px 0px;
+}
+
+a.foget_pwd {
+  color:#4487D2;
+}
+
+a.foget_pwd :hover{
+  color:#4487D2;
+}
+
+a.btn_toreg{
+  display:inline-block;
+  height:17px;
+  color:#FF6600;
+  font-size:16px;
+  font-weight:bold;
+  text-indent:10px;
+  font-family: '微软雅黑';
+}
+
+.about_site_t {
+  border-top:1px solid #ccc;
+  background-color:#F7F7F7;
+  height:20px;
+  line-height: 150%;
+  color:#666;
+  font-size:14px;
+  padding:3px auto auto 3px;
+}
+
+.txt_li{
+  float:left;
+  padding-left:20px;
+  display: block;
+  width:220px;
+  list-style: none;
+  border-right:1px solid #EBEBEB;
+}
+
+.txt_li h3{
+	font-family: '微软雅黑';
+	color: #63676A;
+	font-size:15px;
+}
+
+.li_01{
+  width:67px;
+  height:69px;
+  margin-left:40px;
+  background:url(../images/platform/login/icon1.jpg) no-repeat 0px 0px;
+}
+
+.li_02{
+  width:67px;
+  height:69px;
+  margin-left:40px;
+  background:url(../images/platform/login/icon2.jpg) no-repeat 0px 0px;
+}
+
+.li_03{
+  width:67px;
+  height:69px;
+  margin-left:40px;
+  background:url(../images/platform/login/icon3.jpg) no-repeat 0px 0px;
+}
+
+.li_04{
+  width:67px;
+  height:69px;
+  margin-left:40px;
+  background:url(../images/platform/login/icon4.jpg) no-repeat 0px 0px;
+}
+
+.about_small_li{
+	display: block;
+  margin:0px;
+  padding:0px;
+  list-style: none;
+  line-height: 20px;
+  font-size:12px;
+  color:#ABABAB;
+}
+
+.about_small_li li{
+  list-style: none;
+  text-indent:8px;
+  background:url(../images/platform/dot.jpg) no-repeat left center;
+  overflow: hidden;
+}
+
+.youshi {
+  clear:both;
+  padding: 0px;
+  margin: 20px 0px 30px 0px;
+  background-color:#FEFEFE;
+}
+
+.linebar {
+  height:34px;
+  background:url(images/nav_bg_990.png) repeat-x 0px 0px;
+}
